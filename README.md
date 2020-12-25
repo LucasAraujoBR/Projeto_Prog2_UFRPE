@@ -10,7 +10,7 @@
 ## Nome do Projeto:
 **Restaurant Control**
 ## Repositório de código no GITHUB:
-* [MatheusFidelisPE](https://github.com/MatheusFidelisPE)
+[LucasAraujoBR](https://github.com/LucasAraujoBR)
 ## Descrição Geral do Projeto:
   O sistema a ser implementado será utilizado para melhor administração de um restaurante.
   Atendendo desde controle de estoque, cozinha, mesas, passando por adiministração de funcionários e permitindo aos usuários o controle de entregas, ou seja, informatizando o         máximo possível um restaurante.
