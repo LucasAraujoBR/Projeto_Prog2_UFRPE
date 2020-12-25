@@ -1,4 +1,4 @@
-# RuraDevs  <img  src="https://raw.githubusercontent.com/MatheusFidelisPE/JavaAtividadeSemana1/master/baixados.png" ALIGN = right> 
+# RuraDevs  <img  src="https://github.com/MatheusFidelisPE/JavaAtividadeSemana1/blob/master/logoUFRPE1.jpg" ALIGN = right> 
 
 ## Integrantes do Grupo: 
 * Lucas Edson Silva de Araújo
