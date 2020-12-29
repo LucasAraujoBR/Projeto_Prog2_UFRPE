@@ -19,11 +19,11 @@
   Atendendo desde controle de estoque, cozinha, mesas, passando por adiministração de funcionários e permitindo aos usuários o controle de entregas, ou seja, informatizando o         máximo possível um restaurante.
 
 ## Requisitos do Projeto:
-**1. REQ1.O sistema deve controlar o acesso através de login e senha dependendo do usuário.**
+**1. REQ1.O sistema deve controlar o acesso atravéis de login e senha dependendo do usuário.**
 
 **2. REQ2. O sistema deve permitir atribuir uma mesa a um garçom e executar adição de produtos a comanda da mesa**
 
-**3. REQ3. O gerente após login, terá acesso as comandas, estado atual da mesa. **
+**3. REQ3. O gerente após login, terá acesso as comandas, estado atual da mesa**
 
 **4. REQ4. Controle de pagamentos para o caixa do restaurante**
 
