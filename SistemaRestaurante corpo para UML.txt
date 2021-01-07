@@ -5,7 +5,7 @@ Login -> inserir código *Gerente;
 
 implementar método de retorno de validação do login.
 ------------------------------------------------------------
-Funcionário -> dividido em:
+Funcionários -> dividido em:
 *Gerente -> O gerente pode ver os relatórios de mesas ocupadas, o relátorio de estoque e a adição de produtos ao estoque, relatório de valores das contas diárias até o momento do dia.Fechamento do caixa ao fim do dia(encerrando contas diárias), esse processo será feito pelo gerente,usando o relatório de contas ele concluira o Relatório confirmando após seu login,também gerar código de reserva de mesa(caso solicitado).
 *Garçom -> os garçons, eles poderão abrir conta, fechar conta e alertar a cozinha caso algum pedido esteja atrasado.
 No ato do fechamento da conta o garçom terá seu crédito gorjeta incrementado em 8% da conta, esses dados serão direcionados para posterior pagamento de bonificações e valor referente a gorjeta.Os garçons podem gerar relatórios de mesas atendidas e de gorjetas do mês.
