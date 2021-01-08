@@ -9,13 +9,13 @@ Funcionários -> dividido em:
 *Gerente -> O gerente pode ver os relatórios de mesas ocupadas, o relátorio de estoque e a adição de produtos ao estoque, relatório de valores das contas diárias até o momento do dia.Fechamento do caixa ao fim do dia(encerrando contas diárias), esse processo será feito pelo gerente,usando o relatório de contas ele concluira o Relatório confirmando após seu login,também gerar código de reserva de mesa(caso solicitado).
 *Garçom -> os garçons, eles poderão abrir conta, fechar conta e alertar a cozinha caso algum pedido esteja atrasado.
 No ato do fechamento da conta o garçom terá seu crédito gorjeta incrementado em 8% da conta, esses dados serão direcionados para posterior pagamento de bonificações e valor referente a gorjeta.Os garçons podem gerar relatórios de mesas atendidas e de gorjetas do mês.
-*Cozinheiro ->Cozinheiros, esses farão login pelo código de funcionário. Os trabalhadores serão capazes de visualizar o tempo que o pedido foi feito e marcar um pedido como entregue, além de gerar relatório dos pedidos em andamento e dos pedidos já feitos..
+*Cozinheiro ->Cozinheiros, esses farão login pelo código de funcionário. Os trabalhadores serão capazes de visualizar o tempo que o pedido foi feito e marcar um pedido como entregue, além de gerar relatório dos pedidos em andamento.
 *Caixa/Controlador de mesas -> Abertura e fechamentos de mesas, pode gerar relatórios de mesas ocupadas,executar relatório de conta da mesa e finalizar conta da mesa,mediante pagamento acrescido no faturamento diário.
 ------------------------------------------------------------	Estoque -> O estoque será capaz de gerar relatório da quantidade de mercadorias disponíveis para a venda. O gerente vai ter a opção de adicionar. Só será possível venda de produtos se os mesmos constarem no estoque, isso será feito quando o garçom for colocar o pedido na comanda.
 ------------------------------------------------------------
 Salão do Restaurante -> Dividido em: 
 *Mesas - > Processo de abertura e fechamento, adição de produtos, calculo de conta da mesa, calculo de porcentagem de gorjeta do garçom.
 *Reserva de mesas -> Reserva feita pelo telefone cadastrado no sistema, impedir cadastro nessa mesa sem o código de reserva elaborado pelo gerente.
-*Pedidos -> Adição de pedidos ao cardápio(limitados ao conteúdo do estoque. Exemplo, caso queira adicionar 20 pizzas ao cardápio e no estoque so tenha 15, deve imprimir um alerta dizendo a quantidade disponivel e impedir a adição retornando para tela de solicitação de quantidade.
+*Pedidos -> Implementar relatório de pedidos e pedidos em andamento,Adição de pedidos a cozinha (limitados ao conteúdo do estoque. Exemplo, caso queira adicionar 20 pizzas ao cardápio e no estoque so tenha 15, deve imprimir um alerta dizendo a quantidade disponivel e impedir a adição retornando para tela de solicitação de quantidade.
 *Alertar a Cozinha -> Enviar texto de alerta para o relátorio que o cozinheiro gera dos pedidos feitos.
 *Conta -> Cálculo de conta da mesa e opções de pagamento e envio de Transação para relátorio de contas diárias
