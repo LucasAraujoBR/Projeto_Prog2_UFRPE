@@ -27,14 +27,9 @@
 
 **4. REQ4. Controle de pagamentos para o caixa do restaurante**
 
-**5. REQ5. Controle de pedidos do delivery já entreges**
+**5. REQ5. Controle de pedidosm**
 
 **6. REQ6. Sistema de reserva de mesas**
 
-**7. REQ7. Bonificação e controle de folga do funcionário**
-
-**8. REQ8. Controle de dispensa e contratação para o RH**
-
-**9. REQ9. Gerar relatórios de comandas, funcionários e folgas**
-
+**7. REQ7. Gerar relatórios de comandas, funcionários e estoque**
 
