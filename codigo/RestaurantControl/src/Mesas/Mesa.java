@@ -41,6 +41,6 @@ public class Mesa implements Comparable<Mesa> {
 	@Override
 	public int compareTo(Mesa outra) {
 		
-		return (outra.getNumeroPessoas() - this.getNumeroPessoas());
+		return (this.getNumeroPessoas() - outra.getNumeroPessoas());
 	}
 }
