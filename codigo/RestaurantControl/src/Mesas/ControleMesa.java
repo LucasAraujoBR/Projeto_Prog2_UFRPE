@@ -67,4 +67,8 @@ public class ControleMesa {
    public ArrayList<ReservaMesa> listarReservas(){
 	   return reservas;
    }
+
+	public boolean verificarDisponibilidade(Mesa mesa) {
+		return mesa.getDisponivel();
+	}
 }
