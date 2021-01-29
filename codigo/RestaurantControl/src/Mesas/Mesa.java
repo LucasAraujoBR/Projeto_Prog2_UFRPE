@@ -1,4 +1,4 @@
-package Restaurante;
+package Mesas;
 
 public class Mesa implements Comparable<Mesa> {
      private int numeroPessoas;
