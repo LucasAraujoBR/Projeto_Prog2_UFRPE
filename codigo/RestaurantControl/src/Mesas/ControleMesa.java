@@ -1,4 +1,4 @@
-package Restaurante;
+package Mesas;
 
 import java.util.ArrayList;
 import java.util.Collections;
