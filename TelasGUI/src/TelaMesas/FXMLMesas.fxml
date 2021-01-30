@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="TelaMesas.controllerMesas">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.controllerMesas">
    <children>
       <Label layoutX="257.0" layoutY="14.0" prefHeight="41.0" prefWidth="86.0" text="Mesas">
          <font>
@@ -30,5 +29,15 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="BTMEditarMesas" layoutX="438.0" layoutY="246.0" mnemonicParsing="false" text="Editar Mesas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BTMInter" layoutX="557.0" layoutY="14.0" mnemonicParsing="false" onAction="#acaoBTMInter" prefHeight="25.0" prefWidth="29.0" text="?">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
