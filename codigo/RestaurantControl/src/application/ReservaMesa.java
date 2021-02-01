@@ -26,11 +26,18 @@ public class ReservaMesa extends Mesa {
 	}
 	
 	public void adicionarReserva(ReservaMesa reserva) {
-		reservas.add(reserva);
+		if (!reservas.contains(this.numeroMesa))reservas.add(reserva);
+		else System.out.println("A mesa "+this.numeroMesa+" já foi reservada.");
 	}
 	
 	public void cancelarReserva(ReservaMesa reserva) {
 		if (reservas.contains(reserva)) reservas.remove(reserva);
+	}
+	
+	public String toString() {
+		String string = "";
+		for (ReservaMesa 
+		
 	}
 	
 	
