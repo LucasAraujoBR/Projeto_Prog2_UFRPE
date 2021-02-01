@@ -35,14 +35,29 @@ public class controllerLogin {
 			alerta.setContentText("Favor,informar o campo <Código de usuário>");
 			alerta.show();
 		}
-		if (codigoFuncionario.length() != 0) {
+		if (codigoFuncionario.length() != 0 && senhaGerente.length() == 0) {
 			Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
 			alerta.setTitle("Login realizado com sucesso!");
 			alerta.setHeaderText(null);
 			alerta.setContentText("Clique em OK para continuar");
 			alerta.show();
+			Main.changeScreen("Mesas");
+			CodTXT.clear();
+			senhaTXT.clear();
+			
 		}
 		int senhaG = Integer.parseInt(senhaGerente);
+		if (codigoFuncionario.length() != 0 && senhaG == 1234) {
+			Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+			alerta.setTitle("Login realizado com sucesso!");
+			alerta.setHeaderText(null);
+			alerta.setContentText("Bem vindo Gerente, clique em OK para continuar");
+			alerta.show();
+			Main.changeScreen("Mesas");
+			CodTXT.clear();
+			senhaTXT.clear();
+		}
+		
 		if (senhaG != 1234) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setTitle("Alerta");
