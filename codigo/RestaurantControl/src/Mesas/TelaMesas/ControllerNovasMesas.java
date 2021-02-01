@@ -1,5 +1,10 @@
 package TelaMesas;
 
+import java.util.ArrayList;
+
+import Mesas.ControleMesa;
+import Mesas.Mesa;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -14,7 +19,18 @@ public class ControllerNovasMesas {
 
 	    @FXML
 	    void criarMesa(ActionEvent event) {
-           main.mudarJanela(1);
+	    	if(txtQtd == null) {
+	    		System.out.println("erro");
+	    	}else {
+	    		 System.out.println(txtQtd.getText());
+	    	}
+	    	
+          
+		
+           
+          
+          
+           
 	    }
 
 }
