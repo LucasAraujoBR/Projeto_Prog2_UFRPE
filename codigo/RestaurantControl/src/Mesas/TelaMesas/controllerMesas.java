@@ -1,5 +1,7 @@
 package TelaMesas;
 
+import java.io.IOException;
+
 import Mesas.ControleMesa;
 import Mesas.Mesa;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -26,8 +28,11 @@ public class controllerMesas {
 	    private TextField txtQtd;
 
 	    @FXML
-	    void novaMesa(ActionEvent event) {
-              
+	    void novaMesa(ActionEvent event) throws IOException {
+	    	System.out.println("aprteu");
+	           
+	         main.mudarJanela(2);
+	           
 	    }
 	
 	    @SuppressWarnings("unchecked")
@@ -53,10 +58,6 @@ public class controllerMesas {
 	    	
 	    }
 	    
-	    @FXML
-	    void criarMesa(ActionEvent event) {
-
-	    }
 	    
 	
 	
