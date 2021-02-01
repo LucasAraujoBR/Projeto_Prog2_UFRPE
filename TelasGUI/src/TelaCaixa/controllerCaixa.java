@@ -3,6 +3,7 @@ package TelaCaixa;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -49,14 +50,20 @@ public class controllerCaixa implements Initializable{
         	alerta.setContentText("Favor selecionar uma Conta para executar");
         	alerta.show();
     	}
+    	Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+    	alerta.setTitle("Atenção");
+    	alerta.setHeaderText(null);
+    	alerta.setContentText("Sistema ainda não implementado");
+    	alerta.show();
 	}
 	@FXML
 	void acaoBTMFecharCaixa() {
 		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
     	alerta.setTitle("Fechar caixa");
     	alerta.setHeaderText(null);
-    	alerta.setContentText("Clique em OK para encerrar o caixa");
+    	alerta.setContentText("Caixa encerrado!");
     	alerta.show();
+    	Main.changeScreen("Login");
 	}
 	
 	@Override

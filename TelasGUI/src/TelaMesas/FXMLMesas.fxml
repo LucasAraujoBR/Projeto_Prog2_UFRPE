@@ -13,23 +13,23 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Button fx:id="BTMfecharMesas" layoutX="437.0" layoutY="366.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" text="Fechar Mesas">
+      <Button fx:id="BTMfecharMesas" layoutX="437.0" layoutY="366.0" mnemonicParsing="false" onAction="#acaoBTMFechar" prefHeight="29.0" prefWidth="101.0" text="Fechar Mesas">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="BTMabrirMesas" layoutX="437.0" layoutY="303.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" text="Abrir Mesas">
+      <Button fx:id="BTMabrirMesas" layoutX="437.0" layoutY="303.0" mnemonicParsing="false" onAction="#acaoBTMAbrir" prefHeight="29.0" prefWidth="101.0" text="Abrir Mesas">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <ListView fx:id="listMesas" layoutX="38.0" layoutY="108.0" prefHeight="419.0" prefWidth="381.0" />
+      <ListView fx:id="listMesas" layoutX="38.0" layoutY="108.0" onEditCancel="#listarMesas" onEditCommit="#listarMesas" onEditStart="#listarMesas" prefHeight="419.0" prefWidth="381.0" />
       <Label layoutX="157.0" layoutY="81.0" prefHeight="27.0" prefWidth="143.0" text="Painel de Mesas">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="BTMEditarMesas" layoutX="438.0" layoutY="246.0" mnemonicParsing="false" text="Editar Mesas">
+      <Button fx:id="BTMEditarMesas" layoutX="438.0" layoutY="246.0" mnemonicParsing="false" onAction="#BTMEditarMesa" text="Editar Mesas">
          <font>
             <Font size="14.0" />
          </font>
