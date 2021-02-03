@@ -1,4 +1,4 @@
-package Restaurante;
+package Mesas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,12 +14,13 @@ public class ControleMesa {
     	this.reservas = new ArrayList<>();
     }
     
-    public void cadrastarMesas(Mesa p) {
+    public boolean cadrastarMesas(Mesa p) {
+    	boolean mesaNExiste = false;
     	if(p != null) {
-   		 boolean mesaNExiste = true;
+   		 mesaNExiste = true;
    		 
    		 for(Mesa todas :mesas) {
-   			 if(todas.equals(p)) {
+   			 if(todas.getNumeroDaMesa() == p.getNumeroDaMesa()) {
    				  mesaNExiste = false;
    			 }
    		 }
@@ -28,7 +29,16 @@ public class ControleMesa {
    		 }
    	 }
     	Collections.sort(mesas);
+    	return mesaNExiste;
     	
+    }
+    
+    public void removerMesa(Mesa p) {
+    	for(Mesa todas :mesas) {
+ 		   if(todas.getNumeroDaMesa() == p.getNumeroDaMesa()) {
+ 			   mesas.remove(p);
+ 		   }
+ 	   }
     }
     
    public void adicionarReserva(ReservaMesa reserva){
@@ -67,8 +77,9 @@ public class ControleMesa {
    public ArrayList<ReservaMesa> listarReservas(){
 	   return reservas;
    }
-
-	public boolean verificarDisponibilidade(Mesa mesa) {
-		return mesa.getDisponivel();
-	}
+   
+   public boolean verificarDisponibilidade(Mesa mesa) {
+	   return mesa.getDisponivel();
+   }
+   
 }

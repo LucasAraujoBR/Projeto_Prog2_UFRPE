@@ -5,13 +5,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="293.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.ControllerNovasMesas">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="293.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.controllerMesas">
    <children>
       <TextField fx:id="txtCodigo" layoutX="26.0" layoutY="48.0" prefHeight="25.0" prefWidth="116.0" />
       <TextField fx:id="txtQtd" layoutX="152.0" layoutY="48.0" prefHeight="25.0" prefWidth="128.0" />
       <Text layoutX="38.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo da mesa" wrappingWidth="91.47002792358398" />
       <Text layoutX="152.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de pessoas " wrappingWidth="128.0" />
-      <Button layoutX="130.0" layoutY="104.0" mnemonicParsing="false" onAction="#criarMesa" text="OK" />
+      <Button fx:id="botaoOk" layoutX="130.0" layoutY="104.0" mnemonicParsing="false" onAction="#criarMesa" text="OK" />
    </children>
 </Pane>

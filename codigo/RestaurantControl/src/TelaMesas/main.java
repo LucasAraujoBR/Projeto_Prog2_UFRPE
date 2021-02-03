@@ -13,8 +13,6 @@ import javafx.scene.layout.Pane;
 
 public class main extends Application {
 	
-	private static Scene sceneNovasMesas,sceneMesas;
-	private static Stage primaryStage;
 	
 @Override
 public void start(Stage primaryStage) throws IOException{
