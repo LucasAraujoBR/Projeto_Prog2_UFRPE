@@ -3,6 +3,8 @@ package TelaCaixa;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Mesas.ControleMesa;
+import Mesas.Mesa;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import TelaMesas.controllerMesas;
 
 public class controllerCaixa implements Initializable{
 
@@ -21,7 +24,7 @@ public class controllerCaixa implements Initializable{
     private Button BTMfecharCaixa;
     /*SUBSTITUIR STRING PELA CLASSE CONTAS*/
     @FXML
-    private ListView<String> listContasAbertas;
+    private ListView<Mesa> listContasAbertas;
     @FXML
     private Button BTMInter;
     
@@ -35,15 +38,25 @@ public class controllerCaixa implements Initializable{
     }
     @FXML
 	void listarContas(ActionEvent event) {
-		
-		listContasAbertas.getItems().addAll("Conta 01","Conta 02","Conta 03");
-		listContasAbertas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    	ControleMesa mesa = new ControleMesa();
+    	Mesa m1 = new Mesa(4, 5);
+		Mesa m2 = new Mesa(4, 4);
+		Mesa m3 = new Mesa(4, 3);
+		Mesa m4 = new Mesa(4, 2);
+		Mesa m5 = new Mesa(4, 1);
+		mesa.cadrastarMesas(m1);
+		mesa.cadrastarMesas(m2);
+		mesa.cadrastarMesas(m3);
+		mesa.cadrastarMesas(m4);
+		mesa.cadrastarMesas(m5);
+		listContasAbertas.getItems().addAll(mesa.listarMesas());
+    	listContasAbertas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
     @FXML
 	void acaoBTMFecharConta(ActionEvent event) {
-		String sele = listContasAbertas.getSelectionModel().getSelectedItem();
+		
     	
-    	if(sele==null||sele.isEmpty()) {
+    	/*if(sele==null||sele.isEmpty()) {
     		Alert alerta = new Alert(Alert.AlertType.WARNING);
         	alerta.setTitle("ERRO");
         	alerta.setHeaderText(null);
@@ -54,7 +67,7 @@ public class controllerCaixa implements Initializable{
     	alerta.setTitle("Atenção");
     	alerta.setHeaderText(null);
     	alerta.setContentText("Sistema ainda não implementado");
-    	alerta.show();
+    	alerta.show();*/
 	}
 	@FXML
 	void acaoBTMFecharCaixa() {

@@ -17,7 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 
 public class controllerMesas implements Initializable {
-
+	
 	@FXML
 	private Button BTMfecharMesas;
 	@FXML
@@ -45,29 +45,37 @@ public class controllerMesas implements Initializable {
 	}
 	@FXML
 	void acaoBTMAbrir(ActionEvent event) {
-		ControleMesa mesa = new ControleMesa();
 		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
     	alerta.setTitle("Atenção");
     	alerta.setHeaderText(null);
     	alerta.setContentText("Sistema ainda não implementado");
     	alerta.show();
+    	
 	}
 	@FXML
 	void listarMesas(ActionEvent event) {
 		ControleMesa mesa = new ControleMesa();
-		ArrayList<Mesa> mesaLista = mesa.listarMesas();
-		listMesas.getItems().addAll(mesaLista);
+		Mesa m1 = new Mesa(4, 5);
+		Mesa m2 = new Mesa(4, 4);
+		Mesa m3 = new Mesa(4, 3);
+		Mesa m4 = new Mesa(4, 2);
+		Mesa m5 = new Mesa(4, 1);
+		mesa.cadrastarMesas(m1);
+		mesa.cadrastarMesas(m2);
+		mesa.cadrastarMesas(m3);
+		mesa.cadrastarMesas(m4);
+		mesa.cadrastarMesas(m5);
+		mesa.listarMesas();
+		//ArrayList<Mesa> mesaLista = this.mesa.listarMesas();
+		listMesas.getItems().addAll(mesa.listarMesas());
 		listMesas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
 	}
 	@FXML
 	void BTMEditarMesa(ActionEvent event) {
 		/*ABRIR TELA COM PEDIDOS E TOTAL PARCIAL DESSA MESA,
 		 * NESSA TELA TEM QUE TER A OPÇÃO DE ADICIONAR PEDIDOS OU REMOVER PEDIDOS*/
-		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-    	alerta.setTitle("Atenção");
-    	alerta.setHeaderText(null);
-    	alerta.setContentText("Sistema ainda não implementado");
-    	alerta.show();
+		Main.changeScreen("Pedidos");
 	}
 
 	@Override

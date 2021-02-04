@@ -14,6 +14,7 @@ public class Main extends Application {
 	private static Scene Login;
 	private static Scene TelaCaixa;
 	private static Scene TelaMesas;
+	private static Scene TelaPedidos;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -25,8 +26,12 @@ public class Main extends Application {
 		Parent caixa = FXMLLoader.load(getClass().getResource("../TelaCaixa/FXMLCaixa.fxml"));
 		TelaCaixa = new Scene(caixa, 600, 600);
 		
+		Parent pedidos = FXMLLoader.load(getClass().getResource("../TelaPedido/FXMLPedido.fxml"));
+		TelaPedidos = new Scene(pedidos, 600, 600);
+		
 		Parent mesa = FXMLLoader.load(getClass().getResource("../TelaMesas/FXMLMesas.fxml"));
 		TelaMesas = new Scene(mesa,600,600);
+		
 		primaryStage.setScene(Login);
 		primaryStage.show();
 	}
@@ -41,6 +46,9 @@ public class Main extends Application {
 			break;
 		case "Mesas":
 			stage.setScene(TelaMesas);
+			break;
+		case "Pedidos":
+			stage.setScene(TelaPedidos);
 			break;
 		}
 	}
