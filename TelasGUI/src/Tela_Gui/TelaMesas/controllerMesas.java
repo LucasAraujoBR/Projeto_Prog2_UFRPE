@@ -200,12 +200,12 @@ public class controllerMesas {
 	    	taCodigo.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroDaMesa"));
 	    	taNumero.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroPessoas"));
 	    	taNomeReserva.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("nomeReserva"));
-	    	taDisponibilidade.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("disponivel"));
+	    	taDisponibilidade.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("dis"));
 	    	taNumPessoas.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroReservas"));
 	    	taNome.setPrefWidth(50);
 	    	taDisponibilidade.setPrefWidth(102);
-	    	taInfo.getColumns().addAll(taCodigo,taNumero);
-	    	taReserva.getColumns().addAll(taDisponibilidade,taNomeReserva,taNumPessoas);
+	    	taInfo.getColumns().addAll(taCodigo,taNumero, taDisponibilidade);
+	    	taReserva.getColumns().addAll(taNomeReserva,taNumPessoas);
 	    	tabela.getColumns().addAll(taNome,taInfo,taReserva);
 	    }
 	   
@@ -261,8 +261,8 @@ public class controllerMesas {
 			Alert alerta = new Alert(Alert.AlertType.INFORMATION);
 	    	alerta.setTitle("Ajuda");
 	    	alerta.setHeaderText(null);
-	    	alerta.setContentText("Mesas\nAbrir Mesas: iniciara uma mesa a lista\nEditar Mesas: Abrirá a tela de inserir pedidos e remover pedidos\n"
-	    			+ "Fechar Mesas: Fechara a mesa selecionada");
+	    	alerta.setContentText("Mesas\nNova Mesa: inicia uma mesa a lista\nReserva: Adiciona uma reserva à mesa\n"
+	    			+ "Remover: Remove a reserva da mesa selecionada\nFechar Mesas: Encerra a conta das mesas.");
 	    	alerta.show();
 		}
 	    

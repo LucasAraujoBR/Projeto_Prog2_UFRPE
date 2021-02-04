@@ -14,6 +14,7 @@ public class Mesa implements Comparable<Mesa> {
      private StringProperty nomeMesa;
      private StringProperty nomeReserva;
      private IntegerProperty numeroReservas;
+     private String dis;
      
     public String getNomeReserva() {
     	return nomeReserva.get();
@@ -127,6 +128,21 @@ public class Mesa implements Comparable<Mesa> {
 		this.nomeMesa.set(nomeMesa);;
 	}
 
+	
+	public String getDis() {
+		return disp(getDisponivel());
+	}
+
+
+	public void setDis(String dis) {
+		this.dis = dis;
+	}
+
+
+	public String disp(Boolean b) {
+		if (b) return "Disponivel";
+		else return "Indisponível";
+	}
 
 	
 }

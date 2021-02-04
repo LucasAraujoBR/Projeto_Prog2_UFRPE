@@ -18,7 +18,7 @@ public class ControllerReservas {
 	    	if(controllerMesas.getMesa().getNumeroPessoas() < Integer.parseInt(txtQtdPesoas.getText().trim())){
 	    		Alert cuidado = new Alert(Alert.AlertType.WARNING);
     			cuidado.setTitle("Alerta");
-    			cuidado.setHeaderText("O numero de pessoas execede a quantidade");
+    			cuidado.setHeaderText("O número de pessoas excede a quantidade");
     			cuidado.setContentText("Por favor escolha outra mesa");
     			cuidado.show();
 	    	}else {
