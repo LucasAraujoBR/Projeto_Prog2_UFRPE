@@ -106,13 +106,37 @@ public class controllerMesas {
 			cuidado.setTitle("Erro");
 			cuidado.setHeaderText("Selecione uma mesa para remover");
 			cuidado.show();
+		}else if(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()).getDisponivel()){
+			System.out.println(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()).getDisponivel());
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Essa Mesa não possui nenhuma reserva");
+			cuidado.show();
+			
+			
+			
 		}else {
-	    teste.removerMesa(tabela.getSelectionModel().getSelectedItem());
-		listaDeMesas.remove(tabela.getSelectionModel().getSelectedItem());
-		
+			
+			/*Mesa nova = new Mesa(1,1);
+			nova = tabela.getSelectionModel().getSelectedItem();
+			
+			listaDeMesas.remove(nova);
+			remover(nova);*/
+	    //teste.removerMesa(tabela.getSelectionModel().getSelectedItem());
+		//listaDeMesas.remove(tabela.getSelectionModel().getSelectedItem());
+			controllerMesas.setMesa(null);
+			controllerMesas.setMesa(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()));
+			mesa.setDisponivel(true);
+			mesa.setNomeReserva(null);
+			mesa.setNumeroReservas(0);
+			listaDeMesas.set(tabela.getSelectionModel().getSelectedIndex(), mesa);
 		}
 			
 		}
+	
+	void remover(Mesa p) {
+		teste.removerMesa(p);
+	}
 
 	
     
