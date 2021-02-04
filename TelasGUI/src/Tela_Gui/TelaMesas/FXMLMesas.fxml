@@ -13,7 +13,7 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Button layoutX="490.0" layoutY="170.0" mnemonicParsing="false" onAction="#colocarReserva" prefHeight="29.0" prefWidth="101.0" text="Reserva">
+      <Button layoutX="490.0" layoutY="179.0" mnemonicParsing="false" onAction="#colocarReserva" prefHeight="29.0" prefWidth="101.0" text="Reserva">
          <font>
             <Font size="13.0" />
          </font>
@@ -29,12 +29,7 @@
          </font>
       </Label>
       <TableView fx:id="tabela" layoutX="8.0" layoutY="108.0" prefHeight="419.0" prefWidth="474.0" />
-      <Button layoutX="490.0" layoutY="214.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" text="atualizar">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="490.0" layoutY="260.0" mnemonicParsing="false" onAction="#removeMesa" prefHeight="29.0" prefWidth="101.0" text="Remover">
+      <Button layoutX="490.0" layoutY="227.0" mnemonicParsing="false" onAction="#removeMesa" prefHeight="29.0" prefWidth="101.0" text="Remover">
          <font>
             <Font size="13.0" />
          </font>
