@@ -1,5 +1,4 @@
 package Mesas;
-<<<<<<< HEAD
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -7,8 +6,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-=======
->>>>>>> 7817a9ce8c32892ef6c5632a2d6bb42c7077f078
 
 public class Mesa implements Comparable<Mesa> {
      private IntegerProperty numeroPessoas;
@@ -84,11 +81,11 @@ public class Mesa implements Comparable<Mesa> {
     }
 
 
-	//@Override
-	//public int compareTo(Mesa outra) {
+	@Override
+	public int compareTo(Mesa outra) {
 		
-		//return (this.getNumeroPessoas() - outra.getNumeroPessoas());
-	//}
+		return (this.getNumeroPessoas() - outra.getNumeroPessoas());
+	}
 
 
 	public int getNumeroPessoas() {
@@ -131,9 +128,5 @@ public class Mesa implements Comparable<Mesa> {
 	}
 
 
-	@Override
-	public int compareTo(Mesa o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 }
