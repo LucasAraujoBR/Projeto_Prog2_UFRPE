@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="293.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.controllerMesas">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="293.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.ControllerNovasMesas">
    <children>
       <TextField fx:id="txtCodigo" layoutX="26.0" layoutY="48.0" prefHeight="25.0" prefWidth="116.0" />
       <TextField fx:id="txtQtd" layoutX="152.0" layoutY="48.0" prefHeight="25.0" prefWidth="128.0" />

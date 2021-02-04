@@ -26,7 +26,7 @@ public class ControllerReservas {
 	    	controllerMesas.getMesa().setNomeReserva(txtNomeReserva.getText());
 	    	controllerMesas.getMesa().setDisponivel(false);
 	    	controllerMesas.getMesa().setNumeroReservas(Integer.parseInt(txtQtdPesoas.getText().trim()));
-	    	controllerMesas.adicionarMesa();
+	    	controllerMesas.fecharJanela();
 	    	
 	    	}
 	    	}catch(NumberFormatException nfe) {

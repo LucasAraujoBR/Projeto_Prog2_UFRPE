@@ -12,8 +12,6 @@ import javafx.scene.control.TextField;
 
 public class ControllerNovasMesas {
 	
-	
-	private int contador = 0;
 	public TextField getTxtCodigo() {
 		return txtCodigo;
 	}
@@ -35,21 +33,27 @@ public class ControllerNovasMesas {
 
 	    @FXML
 	    private TextField txtQtd;
-
+	    
 	    @FXML
 	    void criarMesa(ActionEvent event) {
 	    	if(txtQtd == null) {
-	    		contador++;
-	    		if (contador>1) System.out.println("erro");
+	    		
 	    	}else {
 	    		try {
 	    		 
-	    		 controllerMesas teste = new controllerMesas();
 	    		 Mesa nova = new Mesa(Integer.parseInt(txtQtd.getText().trim()), Integer.parseInt(txtCodigo.getText().trim()));
-	    		 controllerMesas.adicionarMesa();
-	    		// teste.addMesas(nova);
-	    		 teste.listaDeMesas.add(new Mesa(nova.getNumeroDaMesa(),nova.getNumeroPessoas()));
-	    		 System.out.println(teste.listaDeMesas);
+	    		 
+	    		 if(controllerMesas.teste.cadrastarMesas(nova)) {
+	    			 controllerMesas.fecharJanela();
+	    		 controllerMesas.setMesa(nova);
+	    		 controllerMesas.setControlador(0);
+	    		 }else {
+	    			 Alert cuidado = new Alert(Alert.AlertType.WARNING);
+		    			cuidado.setTitle("Alerta");
+		    			cuidado.setHeaderText("Esta mesa ja existe");
+		    			cuidado.setContentText("Por favor digitar outro codigo");
+		    			cuidado.show();
+	    		 }
 	    		}
 	    		
 	    		catch(NumberFormatException nfe) {
@@ -60,11 +64,7 @@ public class ControllerNovasMesas {
 	    		}
 	    	}
 	    	
-
-          
-          
-           
-	    }
+}
 	    
 
 }

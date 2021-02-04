@@ -29,7 +29,7 @@
          </font>
       </Label>
       <TableView fx:id="tabela" layoutX="8.0" layoutY="108.0" prefHeight="419.0" prefWidth="474.0" />
-      <Button layoutX="490.0" layoutY="227.0" mnemonicParsing="false" onAction="#removeMesa" prefHeight="29.0" prefWidth="101.0" text="Remover">
+      <Button layoutX="490.0" layoutY="227.0" mnemonicParsing="false" onAction="#removeReserva" prefHeight="29.0" prefWidth="101.0" text="Remover">
          <font>
             <Font size="13.0" />
          </font>
