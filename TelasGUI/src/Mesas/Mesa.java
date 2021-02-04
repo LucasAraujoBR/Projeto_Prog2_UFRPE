@@ -34,7 +34,7 @@ public class Mesa implements Comparable<Mesa> {
 	}
 	
 	public String toString() {
-    	return String.format("Numero da mesa eh "+this.numeroDaMesa+" e o numero de pessoas que cabe na mesa eh  "+this.numeroPessoas);
+    	return String.format("Mesa "+this.numeroDaMesa+" cabe  "+this.numeroPessoas + " pessoas.");
     }
 
 
