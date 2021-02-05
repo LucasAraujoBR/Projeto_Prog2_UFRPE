@@ -201,6 +201,23 @@ public class controllerMesas {
 		void acaoBTMFechar(ActionEvent event) {
 			Main.changeScreen("Caixa");
 		}
+	    
+	    @FXML
+		void BTMEditarMesa(ActionEvent event) {
+	    	/*ABRIR TELA COM PEDIDOS E TOTAL PARCIAL DESSA MESA,
+			 * NESSA TELA TEM QUE TER A OPÇÃO DE ADICIONAR PEDIDOS OU REMOVER PEDIDOS*/
+	    	
+	    	if(tabela.getSelectionModel().isEmpty()) {
+				Alert cuidado = new Alert(Alert.AlertType.ERROR);
+				cuidado.setTitle("Erro");
+				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
+				cuidado.show();
+			}else {
+				Main.changeScreen("Pedidos");
+			}
+			
+			
+		}
 		
 	   
 }

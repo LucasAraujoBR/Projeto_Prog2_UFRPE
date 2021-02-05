@@ -44,5 +44,10 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <Button layoutX="490.0" layoutY="274.0" mnemonicParsing="false" onAction="#BTMEditarMesa" prefHeight="29.0" prefWidth="101.0" text="Editar Mesas">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
