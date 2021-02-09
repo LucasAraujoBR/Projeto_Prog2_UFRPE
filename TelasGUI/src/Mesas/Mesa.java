@@ -1,17 +1,51 @@
 package Mesas;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Mesa implements Comparable<Mesa> {
-     private int numeroPessoas;
-     private int numeroDaMesa;
-     private boolean disponivel;
+     private IntegerProperty numeroPessoas;
+     private IntegerProperty numeroDaMesa;
+     private BooleanProperty disponivel;
+     private StringProperty nomeMesa;
+     private StringProperty nomeReserva;
+     private IntegerProperty numeroReservas;
+     private String dis;
      
-    public Mesa(int numeroPessoas,int numeroDaMesa) {
-    	this.numeroDaMesa = numeroDaMesa;
-    	this.numeroPessoas = numeroPessoas;
-    	this.disponivel = true;
+    public String getNomeReserva() {
+    	return nomeReserva.get();
+	}
+
+
+	public void setNomeReserva(String nomeReserva) {
+		this.nomeReserva.set(nomeReserva);
+	}
+
+
+	public Mesa(int numeroPessoas,int numeroDaMesa) {
+    	this.numeroDaMesa = new SimpleIntegerProperty(numeroDaMesa);
+    	this.numeroPessoas = new SimpleIntegerProperty(numeroPessoas);
+    	this.disponivel = new SimpleBooleanProperty(true);
+    	this.nomeMesa = new SimpleStringProperty("Mesa");
+    	this.nomeReserva = new SimpleStringProperty("");
+    	this.numeroReservas  = new SimpleIntegerProperty();
     }
     
  
+	/*public String getNomeMesa() {
+		return nomeMesa;
+	}
+
+
+	public void setNomeMesa(String nomeMesa) {
+		this.nomeMesa = nomeMesa;
+	}
+
+
 	public boolean getDisponivel() {
 	return disponivel;
 }
@@ -31,10 +65,20 @@ public class Mesa implements Comparable<Mesa> {
 	}
 	public void setNumeroDaMesa(int numeroDaMesa) {
 		this.numeroDaMesa = numeroDaMesa;
-	}
+	}*/
 	
+	public int getNumeroReservas() {
+		return numeroReservas.get();
+	}
+
+
+	public void setNumeroReservas(int numeroReservas) {
+		this.numeroReservas.set(numeroReservas);;
+	}
+
+
 	public String toString() {
-    	return String.format("Mesa "+this.numeroDaMesa+" cabe  "+this.numeroPessoas + " pessoas.");
+    	return String.format("Mesa "+getNumeroDaMesa()+" cabe  "+getNumeroPessoas()+ " pessoas.");
     }
 
 
@@ -43,4 +87,62 @@ public class Mesa implements Comparable<Mesa> {
 		
 		return (this.getNumeroPessoas() - outra.getNumeroPessoas());
 	}
+
+
+	public int getNumeroPessoas() {
+		return numeroPessoas.get();
+	}
+
+
+	public void setNumeroPessoas(int numeroPessoas) {
+		this.numeroPessoas.set(numeroPessoas);
+	}
+
+
+	public int getNumeroDaMesa() {
+		return numeroDaMesa.get();
+	}
+
+
+	public void setNumeroDaMesa(int numeroDaMesa) {
+		this.numeroDaMesa.set(numeroDaMesa);;
+	}
+
+
+	public boolean getDisponivel() {
+		return disponivel.get();
+	}
+
+
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel.set(disponivel);;
+	}
+
+
+	public String getNomeMesa() {
+		return nomeMesa.get();
+	}
+
+
+	public void setNomeMesa(String nomeMesa) {
+		this.nomeMesa.set(nomeMesa);;
+	}
+
+	
+	public String getDis() {
+		return disp(getDisponivel());
+	}
+
+
+	public void setDis(String dis) {
+		this.dis = dis;
+	}
+
+
+	public String disp(Boolean b) {
+		if (b) return "Disponivel";
+		else return "Indisponível";
+	}
+
+	
 }
