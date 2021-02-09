@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+
 
 public class Main extends Application {
 	private static Stage stage;
@@ -15,13 +15,14 @@ public class Main extends Application {
 	private static Scene TelaCaixa;
 	private static Scene TelaMesas;
 	private static Scene TelaPedidos;
+	private static Scene TelaCadastro;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		stage = primaryStage;
 		primaryStage.setTitle("RURADEVS Restaurant Control");
 		Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
-		Login = new Scene(root, 600, 600);
+		Login = new Scene(root, 408, 320);
 
 		Parent caixa = FXMLLoader.load(getClass().getResource("../TelaCaixa/FXMLCaixa.fxml"));
 		TelaCaixa = new Scene(caixa, 600, 600);
@@ -31,6 +32,9 @@ public class Main extends Application {
 		
 		Parent mesa = FXMLLoader.load(getClass().getResource("../TelaMesas/FXMLMesas.fxml"));
 		TelaMesas = new Scene(mesa,600,600);
+		
+		Parent cadastro = FXMLLoader.load(getClass().getResource("../TelaCadastro/FXMLCadastro.fxml"));
+		TelaCadastro = new Scene(cadastro,600,600);
 		
 		primaryStage.setScene(Login);
 		primaryStage.show();
@@ -49,6 +53,9 @@ public class Main extends Application {
 			break;
 		case "Pedidos":
 			stage.setScene(TelaPedidos);
+			break;
+		case "Cadastro":
+			stage.setScene(TelaCadastro);
 			break;
 		}
 	}

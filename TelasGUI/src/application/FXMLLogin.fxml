@@ -6,27 +6,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.controllerLogin">
+<AnchorPane prefHeight="320.0" prefWidth="408.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerLogin">
    <children>
-      <Label layoutX="209.0" layoutY="90.0" prefHeight="73.0" prefWidth="153.0" text="Login">
+      <Label layoutX="158.0" prefHeight="19.0" prefWidth="106.0" text="Login" textFill="#f80000">
          <font>
-            <Font name="System Bold" size="56.0" />
+            <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="CodTXT" layoutX="104.0" layoutY="240.0" prefHeight="26.0" prefWidth="369.0" />
-      <TextField fx:id="senhaTXT" layoutX="101.0" layoutY="305.0" prefHeight="26.0" prefWidth="369.0" />
-      <Label layoutX="213.0" layoutY="200.0" text="Código de usuário">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="157.0" layoutY="274.0" text="Senha Gerente (Apenas Gerente)">
+      <TextField fx:id="CodTXT" layoutX="93.0" layoutY="113.0" prefHeight="14.0" prefWidth="237.0" />
+      <TextField fx:id="senhaTXT" layoutX="89.0" layoutY="173.0" prefHeight="26.0" prefWidth="245.0" />
+      <Label layoutX="139.0" layoutY="71.0" text="Código de usuário">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="BTM01" layoutX="248.0" layoutY="346.0" mnemonicParsing="false" onAction="#acaoBotao" text="Entrar">
+      <Label layoutX="146.0" layoutY="147.0" text="Senha Gerente">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="BTM01" layoutX="232.0" layoutY="221.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="39.0" prefWidth="106.0" text="Entrar">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="BTMCadastrar" layoutX="93.0" layoutY="221.0" mnemonicParsing="false" onAction="#acaBTMCadastrar" prefHeight="39.0" prefWidth="106.0" text="Cadastrar">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
