@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import partePedidos.Pedidos;
@@ -25,9 +26,20 @@ public class ControllerPedido implements Initializable {
 
 	@FXML
 	private Button BTMVoltar;
+	@FXML
+    private Button BTMRemover;
 
+    @FXML
+    private Label labelMesaSelecionada;
+    @FXML
+    void acaoBTMRemover(ActionEvent event) {
+
+    }
 	@FXML
 	void addPedidoBTM(ActionEvent event) {
+		
+		
+		
 
 	}
 
@@ -36,7 +48,7 @@ public class ControllerPedido implements Initializable {
 		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
 		alerta.setTitle("Ajuda");
 		alerta.setHeaderText(null);
-		alerta.setContentText("Mesas\nAdicionar pedido: colocara um pedido a mesa\nVoltar: voltará para tela de Mesas");
+		alerta.setContentText("Mesas\nAdicionar pedido: colocara um pedido a mesa\nVoltar: voltará para tela de Mesas\nRemover: remove um pedido");
 		alerta.show();
 	}
 
