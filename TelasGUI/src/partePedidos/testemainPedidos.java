@@ -11,7 +11,7 @@ public class testemainPedidos {
 		
 		
 		PedidosCRUD p = new PedidosCRUD();
-		/*Pedidos p1 = new Pedidos(1, "A", 1, 1, false);
+		Pedidos p1 = new Pedidos(1, "A", 1, 1, false);
 		Pedidos p2 = new Pedidos(1, "B", 1, 1, false);
 		Pedidos p3 = new Pedidos(1, "C", 1, 1, false);
 		ControleMesa m = new ControleMesa();
@@ -31,11 +31,7 @@ public class testemainPedidos {
 		p.addPedidos(m2, p2);
 		System.out.println(p.listarCardapio());
 		System.out.println("-----------------------------------");
-		System.out.println(p.listarPedidos());*/
-		
-		pedCAD pd = new pedCAD("Pizza",1,22.5);
-		p.cadPED(pd);
-		System.out.println(p.listarCadPed());
+		System.out.println(p.listarPedidos());
 		
 
 	}
