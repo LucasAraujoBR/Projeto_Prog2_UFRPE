@@ -215,6 +215,7 @@ public class controllerMesas implements Initializable{
 	    
 	    @FXML
 		void acaoBTMFechar(ActionEvent event) {
+	    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
 			Main.changeScreen("Caixa");
 		}
 	    
@@ -234,9 +235,19 @@ public class controllerMesas implements Initializable{
 			
 			
 		}
+       
+	    
+	    public static Mesa mesaSelecionada;
+		
+		
+		public static Mesa getMesaSelecionada() {
+			return mesaSelecionada;
+		}
 
-		
-		
+		public static void setMesaSelecionada(Mesa mesaSelecionada) {
+			controllerMesas.mesaSelecionada = mesaSelecionada;
+		}
+
 		@FXML
 	    void setOnKeyPressed(MouseEvent event) {
 			if(controlador == 100) {

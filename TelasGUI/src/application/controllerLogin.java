@@ -136,7 +136,7 @@ public class controllerLogin implements Initializable {
 			CodTXT.clear();
 			senhaTXT.clear();
 			for(Funcionario d :retornaCad().listarFuncionario()) {
-				if("1234" == d.getCodFuncionario()) {
+				if("gerente159" == d.getCodFuncionario()) {
 					System.out.println("alou");
 					controllerMesas.setControlador(100);
 					controllerLogin.setCodigoTeste(d.getCargo());

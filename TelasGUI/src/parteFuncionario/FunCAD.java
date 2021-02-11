@@ -15,21 +15,25 @@ public class FunCAD {
 		this.fun = new ArrayList<>();
 	}
 
-	public void cadrastarFuncionario(Funcionario p) {
+	public boolean cadrastarFuncionario(Funcionario p) {
+		
+		boolean FuncionarioExiste = false;
 		if (p != null) {
-			boolean FuncionarioExiste = true;
+			FuncionarioExiste = true;
 
 			for (Funcionario todas : fun) {
-				if (todas.equals(p)) {
+				if (todas.getCodFuncionario().equals(p.getCodFuncionario())) {
 					FuncionarioExiste = false;
 					this.jaCadastrado = true;
-					break;
 				}
 			}
-			if (FuncionarioExiste == true) {
+			
+			if (FuncionarioExiste) {	
 				this.fun.add(p);
 			}
+			
 		}
+		return FuncionarioExiste;
 
 	}
 	public void cadrastarCodFuncionario(ArrayList<String> codFuncionario2) {
@@ -48,6 +52,10 @@ public class FunCAD {
 			}
 		}
 
+	}
+	
+	public void removerFuncionario(Funcionario p) {
+		fun.remove(p);
 	}
 
 	public boolean isJaCadastrado() {

@@ -54,7 +54,7 @@ public class controllerCaixa implements Initializable{
 	}
     @FXML
 	void acaoBTMFecharConta(ActionEvent event) {
-		
+		System.out.println(controllerMesas.getMesaSelecionada());
     	
     	/*if(sele==null||sele.isEmpty()) {
     		Alert alerta = new Alert(Alert.AlertType.WARNING);
