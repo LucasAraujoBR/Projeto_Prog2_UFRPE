@@ -17,34 +17,34 @@ public class FunCAD {
 
 	public void cadrastarFuncionario(Funcionario p) {
 		if (p != null) {
-			boolean FuncionarioExiste = true;
+			boolean FuncionarioExiste = false;
 
 			for (Funcionario todas : fun) {
 				if (todas.equals(p)) {
-					FuncionarioExiste = false;
+					FuncionarioExiste = true;
 					this.jaCadastrado = true;
 					break;
 				}
 			}
-			if (FuncionarioExiste == true) {
+			if (FuncionarioExiste == false) {
 				this.fun.add(p);
 			}
 		}
 
 	}
-	public void cadrastarCodFuncionario(String p) {
-		if (p != null) {
-			boolean FuncionarioExiste = true;
+	public void cadrastarCodFuncionario(ArrayList<String> codFuncionario2) {
+		if (codFuncionario2 != null) {
+			boolean FuncionarioExiste = false;
 
 			for (String todas : codFuncionario) {
-				if (todas.equals(p)) {
-					FuncionarioExiste = false;
+				if (todas.equals(codFuncionario2)) {
+					FuncionarioExiste = true;
 					this.jaCadastrado = true;
 					break;
 				}
 			}
-			if (FuncionarioExiste == true) {
-				this.codFuncionario.add(p);
+			if (FuncionarioExiste == false) {
+				this.codFuncionario.addAll(codFuncionario2);
 			}
 		}
 

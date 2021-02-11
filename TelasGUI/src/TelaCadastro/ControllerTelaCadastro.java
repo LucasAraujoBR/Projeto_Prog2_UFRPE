@@ -1,9 +1,11 @@
 package TelaCadastro;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.controllerLogin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,8 +36,6 @@ public class ControllerTelaCadastro implements Initializable {
 	@FXML
 	private ListView<Funcionario> listViewCadastro;
 
-	ObservableList<String> list = FXCollections.observableArrayList("Gerente: gerente159   |   Senha: 1234");
-
 	@FXML
 	private Button adicionarBTM;
 	@FXML
@@ -46,14 +46,6 @@ public class ControllerTelaCadastro implements Initializable {
 
 	@FXML
 	private TextField codFuncionarioTXT;
-	/*private String cod = codFuncionarioTXT.getText();
-	public String getCod() {
-		return cod;
-	}
-
-	public void setCod(String cod) {
-		this.cod = cod;
-	}*/
 
 	@FXML
 	private Button interBTM;
@@ -61,17 +53,19 @@ public class ControllerTelaCadastro implements Initializable {
 	@FXML
 	private Button voltaBTM;
 	FunCAD cad = new FunCAD();
-	
-	
+	ArrayList<Funcionario> func = cad.listarFuncionario();
+	ArrayList<String> codFun = new ArrayList();
+
 	@FXML
 	void acaoAdicionarBTM(ActionEvent event) {
-		
 		String nomeF = nomeTXT.getText();
 		String cpfF = cpfTXT.getText();
 		String emailF = emailTXT.getText();
 		String telefoneF = telefoneTXT.getText();
 		String codF = codFuncionarioTXT.getText();
 		String cargoF = cargoTXT.getText();
+		codFun.add(codF);
+		cad.cadrastarCodFuncionario(codFun);
 		if (nomeF.length() == 0 || cpfF.length() == 0 || emailF.length() == 0 || telefoneF.length() == 0
 				|| codF.length() == 0 || cargoF.length() == 0) {
 			Alert alerta = new Alert(Alert.AlertType.WARNING);
@@ -79,54 +73,48 @@ public class ControllerTelaCadastro implements Initializable {
 			alerta.setHeaderText(null);
 			alerta.setContentText("Favor,informar todos os campos!");
 			alerta.show();
-		}else {
-			
-		Funcionario f = new Funcionario(nomeF, cpfF, telefoneF, emailF, codF, cargoF);
-		cad.cadrastarFuncionario(f);
-		cad.cadrastarCodFuncionario(codF);
-		System.out.println("CodFuncionario:" +cad.listarCodFuncionario());
-		if (cad.isJaCadastrado() == false) {
-			listViewCadastro.getItems().addAll(cad.listarFuncionario());
-			nomeTXT.clear();
-			cpfTXT.clear();
-			emailTXT.clear();
-			telefoneTXT.clear();
-			codFuncionarioTXT.clear();
-			cargoTXT.clear();
 		} else {
-			Alert alerta = new Alert(Alert.AlertType.ERROR);
-			alerta.setTitle("Erro");
-			alerta.setHeaderText(null);
-			alerta.setContentText("Funcionário já cadastrado,favor checar os dados");
-			alerta.show();
-			nomeTXT.clear();
-			cpfTXT.clear();
-			emailTXT.clear();
-			telefoneTXT.clear();
-			codFuncionarioTXT.clear();
-			cargoTXT.clear();
-		}
+			func.removeAll(cad.listarFuncionario());
+			Funcionario f = new Funcionario(nomeF, cpfF, telefoneF, emailF, codF, cargoF);
+			cad.cadrastarFuncionario(f);
+			System.out.println("CodFuncionario:" + cad.listarFuncionario());
+			if (cad.isJaCadastrado() == false) {
+				listViewCadastro.getItems().addAll(cad.listarFuncionario());
+				nomeTXT.clear();
+				cpfTXT.clear();
+				emailTXT.clear();
+				telefoneTXT.clear();
+				codFuncionarioTXT.clear();
+				cargoTXT.clear();
+			} else {
+				Alert alerta = new Alert(Alert.AlertType.ERROR);
+				alerta.setTitle("Erro");
+				alerta.setHeaderText(null);
+				alerta.setContentText("Funcionário já cadastrado,favor checar os dados");
+				alerta.show();
+				nomeTXT.clear();
+				cpfTXT.clear();
+				emailTXT.clear();
+				telefoneTXT.clear();
+				codFuncionarioTXT.clear();
+				cargoTXT.clear();
+			}
 		}
 
 	}
 
 	@FXML
 	void listarFuncionarios(ActionEvent event) {
-		listViewCadastro.getItems().removeAll(cad.listarFuncionario());
+
 		listViewCadastro.getItems().addAll(cad.listarFuncionario());
 		listViewCadastro.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
 
 	}
 
 	@FXML
 	void acaoRemoverBTM(ActionEvent event) {
-		//Sistema não implementado!
-		Alert alerta = new Alert(Alert.AlertType.WARNING);
-		alerta.setTitle("Alerta");
-		alerta.setHeaderText(null);
-		alerta.setContentText("Sistema não implementado!");
-		alerta.show();
+		int itemSelecionado = listViewCadastro.getSelectionModel().getSelectedIndex();
+		listViewCadastro.getItems().remove(itemSelecionado);
 	}
 
 	@FXML
@@ -148,7 +136,18 @@ public class ControllerTelaCadastro implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// listViewCadastro.setItems(list);
+		Funcionario f1 = new Funcionario("João", "845.965.852-65", "(81)98888-5959", "Joaofsm@gmail.com", "123",
+				"Garçom");
+		Funcionario f2 = new Funcionario("Arthur", "585.905.152-05", "(81)97778-5959", "Arthurfsm@gmail.com", "012",
+				"Caixa");
+		Funcionario f3 = new Funcionario("Pedro", "125.102.152-00", "(81)97788-5959", "Pedrofsm@gmail.com", "001",
+				"Cozinha");
+		Funcionario f4 = new Funcionario("Carlos", "159.987.845-15", "(81)97788-0408", "Carlosfsm@gmail.com",
+				"gerente159", "Gerente");
+		cad.cadrastarFuncionario(f4);
+		cad.cadrastarFuncionario(f3);
+		cad.cadrastarFuncionario(f2);
+		cad.cadrastarFuncionario(f1);
 		listarFuncionarios(null);
 
 	}

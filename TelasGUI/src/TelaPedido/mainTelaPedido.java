@@ -17,7 +17,7 @@ public class mainTelaPedido extends Application {
 public void start(Stage primaryStage) throws IOException{
 	
 		Pane root = FXMLLoader.load(getClass().getResource("FXMLPedido.fxml"));
-		Scene scene = new Scene(root,600,600);
+		Scene scene = new Scene(root,711,600);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setTitle("RURADEVS Restaurant Control");
