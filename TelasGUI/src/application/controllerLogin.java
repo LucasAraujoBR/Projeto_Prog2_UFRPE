@@ -18,6 +18,7 @@ import javafx.scene.input.ScrollEvent;
 import parteFuncionario.FunCAD;
 import parteFuncionario.Funcionario;
 import TelaCadastro.ControllerTelaCadastro;
+import TelaMesas.controllerMesas;
 
 /*OBS: SISTEMA DE VALIDAÇÃO DO LOGIN COM CODIGO AINDA NÃO DISCUTIDO*/
 public class controllerLogin implements Initializable {
@@ -25,10 +26,20 @@ public class controllerLogin implements Initializable {
 	private Button BTM01;
 	@FXML
 	private TextField CodTXT;
-	ControllerTelaCadastro ct = new ControllerTelaCadastro();
-	FunCAD cad = ct.retornaCad();
-	ArrayList<String> codigo = this.cad.listarCodFuncionario();
 	
+	public static FunCAD cad = new FunCAD();
+	ArrayList<String> codigo = controllerLogin.cad.listarCodFuncionario();
+	
+	private static String codigoTeste;
+	
+	public static String getCodigoTeste() {
+		return codigoTeste;
+	}
+
+	public static void setCodigoTeste(String codigoTeste) {
+		controllerLogin.codigoTeste = codigoTeste;
+	}
+
 	@FXML
 	private TextField senhaTXT;
 
@@ -72,10 +83,19 @@ public class controllerLogin implements Initializable {
 			// testa se o codigo ja está cadastrado da arrayList codFuncionario2
 			System.out.println(codFuncionario2);
 			boolean tem = false;
-			for (String c : codFuncionario2) {
+			for (String c : cad.listarCodFuncionario()) {
 				if (c.equals(codigoFuncionario)) {
+					controllerMesas.setControlador(100);
 					tem = true;
-				}
+					for(Funcionario d :retornaCad().listarFuncionario()) {
+						if(c == d.getCodFuncionario()) {
+							controllerLogin.setCodigoTeste(d.getCargo());
+							System.out.println("alou2");
+						}
+					}
+					
+					
+					}
 			}
 			if (tem == true) {
 				Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -115,6 +135,14 @@ public class controllerLogin implements Initializable {
 			Main.changeScreen("Mesas");
 			CodTXT.clear();
 			senhaTXT.clear();
+			for(Funcionario d :retornaCad().listarFuncionario()) {
+				if("1234" == d.getCodFuncionario()) {
+					System.out.println("alou");
+					controllerMesas.setControlador(100);
+					controllerLogin.setCodigoTeste(d.getCargo());
+				
+				}
+			}
 		}
 
 		if (senhaG != 1234) {
@@ -128,11 +156,12 @@ public class controllerLogin implements Initializable {
 
 	}
 	public FunCAD retornaCad() {
-		return this.cad;
+		return controllerLogin.cad;
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		codFuncionario2.addAll(cad.listarCodFuncionario());
 		codFuncionario2.add("123");     //Garçom
 		codFuncionario2.add("012");		//Caixa
@@ -140,6 +169,7 @@ public class controllerLogin implements Initializable {
 		codFuncionario2.add("gerente159");		//Funcionário Mesa
 		ArrayList<String> codFuncionario = cad.listarCodFuncionario();
 		cad.cadrastarCodFuncionario(codFuncionario2);
+		
 	//	cad.cadrastarCodFuncionario(codFuncionario);
 		System.out.println("Código de Funcionário: "+cad.listarCodFuncionario());
 		System.out.println("Código de Gerente: gerente159 , Senha do Gerente: 1234");

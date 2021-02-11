@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.controllerLogin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,11 +57,11 @@ public class ControllerTelaCadastro implements Initializable {
 
 	@FXML
 	private Button interBTM;
-
+	
 	@FXML
 	private Button voltaBTM;
-	FunCAD cad = new FunCAD();
-	ArrayList<String> codFun = new ArrayList();
+	@SuppressWarnings("unchecked")
+	ArrayList<String> codFun = new ArrayList<String>();
 
 	@FXML
 	void acaoAdicionarBTM(ActionEvent event) {
@@ -81,12 +82,12 @@ public class ControllerTelaCadastro implements Initializable {
 		} else {
 
 			Funcionario f = new Funcionario(nomeF, cpfF, telefoneF, emailF, codF, cargoF);
-			cad.cadrastarFuncionario(f);
+			controllerLogin.cad.cadrastarFuncionario(f);
 			codFun.add(codF);
-			cad.cadrastarCodFuncionario(codFun);
-			System.out.println("CodFuncionario:" + cad.listarCodFuncionario());
-			if (cad.isJaCadastrado() == false) {
-				listViewCadastro.getItems().addAll(cad.listarFuncionario());
+			controllerLogin.cad.cadrastarCodFuncionario(codFun);
+			System.out.println("CodFuncionario:" + controllerLogin.cad.listarCodFuncionario());
+			if (controllerLogin.cad.isJaCadastrado() == false) {
+				listViewCadastro.getItems().addAll(f);
 				nomeTXT.clear();
 				cpfTXT.clear();
 				emailTXT.clear();
@@ -113,7 +114,7 @@ public class ControllerTelaCadastro implements Initializable {
 	@FXML
 	void listarFuncionarios(ActionEvent event) {
 		
-		listViewCadastro.getItems().addAll(cad.listarFuncionario());
+		listViewCadastro.getItems().addAll(controllerLogin.cad.listarFuncionario());
 		listViewCadastro.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 	}
@@ -145,7 +146,7 @@ public class ControllerTelaCadastro implements Initializable {
 		Main.changeScreen("Login");
 	}
 	public FunCAD retornaCad() {
-		return this.cad;
+		return controllerLogin.cad;
 	}
 
 	@Override
@@ -154,12 +155,18 @@ public class ControllerTelaCadastro implements Initializable {
 		Funcionario f2 = new Funcionario("Arthur", "585.905.152-05", "(81)97778-5959","Arthurfsm@gmail.com", "012", "Caixa");
 		Funcionario f3 = new Funcionario("Pedro", "125.102.152-00", "(81)97788-5959", "Pedrofsm@gmail.com", "001", "Cozinha");
 		Funcionario f4 = new Funcionario("Carlos", "159.987.845-15", "(81)97788-0408", "Carlosfsm@gmail.com", "gerente159", "Gerente");
-		cad.cadrastarFuncionario(f4);
-		cad.cadrastarFuncionario(f3);
-		cad.cadrastarFuncionario(f2);
-		cad.cadrastarFuncionario(f1);
-		cad.cadrastarCodFuncionario(codFun);
+		Funcionario gerente = new Funcionario("Gerente","107","gerente@gmail.com","819999999","1234","Gerente");
+		controllerLogin.cad.cadrastarFuncionario(f4);
+		controllerLogin.cad.cadrastarFuncionario(f3);
+		controllerLogin.cad.cadrastarFuncionario(f2);
+		controllerLogin.cad.cadrastarFuncionario(f1);
+		controllerLogin.cad.cadrastarFuncionario(gerente);
+		controllerLogin.cad.cadrastarCodFuncionario(codFun);
 		listarFuncionarios(null);
+		
+
+		
+		
 		
 
 	}

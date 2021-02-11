@@ -21,7 +21,7 @@ public void start(Stage primaryStage) throws IOException{
 	Scene scene = new Scene(root,600,600);
 	primaryStage.setScene(scene);
 	primaryStage.show();
-	primaryStage.setTitle("RURADEVS Restaurant Control");
+	primaryStage.setTitle("RURADEVS Restaurant Control ");
 		
 		
 	

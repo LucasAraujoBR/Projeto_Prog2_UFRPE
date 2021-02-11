@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.controllerMesas">
+<AnchorPane onMouseMoved="#setOnKeyPressed" prefHeight="579.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaMesas.controllerMesas">
    <children>
       <Label layoutX="202.0" layoutY="14.0" prefHeight="41.0" prefWidth="86.0" text="Mesas">
          <font>
@@ -28,7 +28,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tabela" layoutX="8.0" layoutY="108.0" prefHeight="419.0" prefWidth="474.0" />
+      <TableView fx:id="tabela" layoutX="8.0" layoutY="108.0" onMouseMoved="#setOnKeyPressed" prefHeight="419.0" prefWidth="474.0" />
       <Button layoutX="490.0" layoutY="227.0" mnemonicParsing="false" onAction="#removeReserva" prefHeight="29.0" prefWidth="101.0" text="Remover">
          <font>
             <Font size="13.0" />
@@ -49,5 +49,9 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <Label fx:id="cargo" layoutX="8.0" layoutY="86.0" prefHeight="21.0" prefWidth="86.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
    </children>
 </AnchorPane>

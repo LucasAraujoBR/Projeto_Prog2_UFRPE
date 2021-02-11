@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import Mesas.ControleMesa;
 import Mesas.Mesa;
 import application.Main;
+import application.controllerLogin;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -21,14 +22,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 
-public class controllerMesas {
+public class controllerMesas implements Initializable{
 	private static Scene sceneNovasMesas;
 	
     private static Stage cena2  = new Stage();
@@ -44,7 +49,7 @@ public class controllerMesas {
 		controllerMesas.mesa = mesa;
 	}
 	
-	private static int controlador = 1;
+	private static int controlador = 100;
 	
 	
 
@@ -138,7 +143,6 @@ public class controllerMesas {
 	    void novaMesa(ActionEvent event) throws IOException {
 	         FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("FXMLNovasMesas.fxml"));
 	         Parent parentNovasMesas = novasMesas.load();
-	         
 	        sceneNovasMesas = new Scene(parentNovasMesas,293.0,143.0);
 	        cena2.setTitle("Mesas");
 	        cena2.setScene(sceneNovasMesas);
@@ -156,12 +160,21 @@ public class controllerMesas {
 	    	cena2.close();
 	    }
 	
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		initi();
+	}
+	
+	
+	
 	
 		
 //inicializando algumas coisas		
 	    @SuppressWarnings("unchecked")
-	    @FXML
-		void initialize() {
+	   
+		public void initi() {
+	    	
+	    	System.out.println("teste100");
 		    tabela.setItems(listaDeMesas);
 	    	taNome.setCellValueFactory(new PropertyValueFactory<Mesa, String>("nomeMesa"));
 	    	taCodigo.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroDaMesa"));
@@ -174,9 +187,12 @@ public class controllerMesas {
 	    	taInfo.getColumns().addAll(taCodigo,taNumero, taDisponibilidade);
 	    	taReserva.getColumns().addAll(taNomeReserva,taNumPessoas);
 	    	tabela.getColumns().addAll(taNome,taInfo,taReserva);
+	    
+	    	
 	    }
 	   
-	    	
+	    @FXML
+	    private Label cargo = new Label();
 	    
 	    
 		
@@ -218,6 +234,20 @@ public class controllerMesas {
 			
 			
 		}
+
+		
+		
+		@FXML
+	    void setOnKeyPressed(MouseEvent event) {
+			if(controlador == 100) {
+				System.out.println("alo");
+				cargo.setText(controllerLogin.getCodigoTeste());
+				controlador = 1;
+			}
+			
+	    }
+		
+	 
 		
 	   
 }
