@@ -215,8 +215,18 @@ public class controllerMesas implements Initializable{
 	    
 	    @FXML
 		void acaoBTMFechar(ActionEvent event) {
-	    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
-			Main.changeScreen("Caixa");
+	    	
+	    	if(tabela.getSelectionModel().isEmpty()) {
+				Alert cuidado = new Alert(Alert.AlertType.ERROR);
+				cuidado.setTitle("Erro");
+				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
+				cuidado.show();
+			}else {
+				controlador = 100;
+		    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
+				Main.changeScreen("Caixa");
+			}
+	    	
 		}
 	    
 	    @FXML
@@ -230,7 +240,9 @@ public class controllerMesas implements Initializable{
 				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
 				cuidado.show();
 			}else {
+				controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
 				Main.changeScreen("Pedidos");
+				controlador = 100;
 			}
 			
 			

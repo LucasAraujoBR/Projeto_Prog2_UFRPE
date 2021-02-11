@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCaixa.controllerCaixa">
+<AnchorPane onMouseMoved="#mouseAtt" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCaixa.controllerCaixa">
    <children>
       <Label layoutX="255.0" layoutY="14.0" prefHeight="45.0" prefWidth="91.0" text="Caixa">
          <font>
@@ -24,7 +24,7 @@
          </font>
       </Button>
       <ListView fx:id="listContasAbertas" layoutX="57.0" layoutY="116.0" onEditCancel="#listarContas" onEditCommit="#listarContas" onEditStart="#listarContas" prefHeight="361.0" prefWidth="291.0" />
-      <Label layoutX="136.0" layoutY="88.0" text="Contas abertas">
+      <Label layoutX="136.0" layoutY="88.0" text="Pedidos Mesa">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

@@ -28,7 +28,7 @@ public class Main extends Application {
 		TelaCaixa = new Scene(caixa, 600, 600);
 		
 		Parent pedidos = FXMLLoader.load(getClass().getResource("../TelaPedido/FXMLPedido.fxml"));
-		TelaPedidos = new Scene(pedidos, 600, 600);
+		TelaPedidos = new Scene(pedidos, 711, 600);
 		
 		Parent mesa = FXMLLoader.load(getClass().getResource("../TelaMesas/FXMLMesas.fxml"));
 		TelaMesas = new Scene(mesa,600,600);

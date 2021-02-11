@@ -13,6 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.input.MouseEvent;
+import partePedidos.pedCAD;
 import TelaMesas.controllerMesas;
 
 public class controllerCaixa implements Initializable{
@@ -24,7 +26,7 @@ public class controllerCaixa implements Initializable{
     private Button BTMfecharCaixa;
     /*SUBSTITUIR STRING PELA CLASSE CONTAS*/
     @FXML
-    private ListView<Mesa> listContasAbertas;
+    private ListView<pedCAD> listContasAbertas;
     @FXML
     private Button BTMInter;
     
@@ -38,7 +40,7 @@ public class controllerCaixa implements Initializable{
     }
     @FXML
 	void listarContas(ActionEvent event) {
-    	ControleMesa mesa = new ControleMesa();
+    	/*ControleMesa mesa = new ControleMesa();
     	Mesa m1 = new Mesa(4, 5);
 		Mesa m2 = new Mesa(4, 4);
 		Mesa m3 = new Mesa(4, 3);
@@ -50,7 +52,7 @@ public class controllerCaixa implements Initializable{
 		mesa.cadrastarMesas(m4);
 		mesa.cadrastarMesas(m5);
 		listContasAbertas.getItems().addAll(mesa.listarMesas());
-    	listContasAbertas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    	listContasAbertas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);*/
 	}
     @FXML
 	void acaoBTMFecharConta(ActionEvent event) {
@@ -76,6 +78,7 @@ public class controllerCaixa implements Initializable{
     	alerta.setHeaderText(null);
     	alerta.setContentText("Caixa encerrado!");
     	alerta.show();
+    	listContasAbertas.getItems().clear();
     	Main.changeScreen("Login");
 	}
 	
@@ -84,5 +87,15 @@ public class controllerCaixa implements Initializable{
 		listarContas(null);
 		
 	}
+	
+	 @FXML
+	    void mouseAtt(MouseEvent event) {
+
+		   if(controllerMesas.getControlador() == 100) {
+			   listContasAbertas.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
+			   controllerMesas.setControlador(1);
+			}
+		
+	    }
 
 }

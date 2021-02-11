@@ -1,11 +1,14 @@
 package Mesas;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import partePedidos.pedCAD;
 
 public class Mesa implements Comparable<Mesa> {
      private IntegerProperty numeroPessoas;
@@ -15,7 +18,7 @@ public class Mesa implements Comparable<Mesa> {
      private StringProperty nomeReserva;
      private IntegerProperty numeroReservas;
      private String dis;
-     
+     private ArrayList<pedCAD> pedidos;
     public String getNomeReserva() {
     	return nomeReserva.get();
 	}
@@ -33,6 +36,8 @@ public class Mesa implements Comparable<Mesa> {
     	this.nomeMesa = new SimpleStringProperty("Mesa");
     	this.nomeReserva = new SimpleStringProperty("");
     	this.numeroReservas  = new SimpleIntegerProperty();
+    	
+    	this.pedidos = new ArrayList<pedCAD>();
     }
     
  
@@ -67,6 +72,22 @@ public class Mesa implements Comparable<Mesa> {
 		this.numeroDaMesa = numeroDaMesa;
 	}*/
 	
+	public void cadastrarPedido(pedCAD p) {
+		pedidos.add(p);
+	}
+	public void removerPedido(pedCAD p) {
+		pedidos.remove(p);
+	}
+	public ArrayList<pedCAD> getPedidos() {
+		return pedidos;
+	}
+
+
+	public void setPedidos(ArrayList<pedCAD> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+
 	public int getNumeroReservas() {
 		return numeroReservas.get();
 	}
