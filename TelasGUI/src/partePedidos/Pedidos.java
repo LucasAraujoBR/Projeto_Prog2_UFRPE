@@ -25,6 +25,7 @@ public class Pedidos {
 		this.preco = preco;
 	}
 
+	
 	public int getCodPedido() {
 		return codPedido;
 	}

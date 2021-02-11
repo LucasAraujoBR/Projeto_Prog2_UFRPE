@@ -9,10 +9,10 @@ public class mainfunteste {
 		Funcionario f = new Funcionario("a", "a", "a", "a", "a", "a");
 		fu.cadrastarCodFuncionario("2424");
 		ArrayList<String> codigo = fu.listarCodFuncionario();
-		System.out.println(codigo);*/
+		System.out.println(codigo);
 		
 		
-		/*FunCAD fu = new FunCAD();
+		FunCAD fu = new FunCAD();
 		Funcionario fg = new Funcionario("a","a","a","a","a","a");
 	
 		fu.cadrastarMesas(fg);

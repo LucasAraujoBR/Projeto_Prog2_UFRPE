@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import Mesas.ControleMesa;
 import Mesas.Mesa;
+import TelaCaixa.controllerCaixa;
 import application.Main;
 import application.controllerLogin;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -215,8 +216,18 @@ public class controllerMesas implements Initializable{
 	    
 	    @FXML
 		void acaoBTMFechar(ActionEvent event) {
-	    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
-			Main.changeScreen("Caixa");
+	    	
+	    	if(tabela.getSelectionModel().isEmpty()) {
+				Alert cuidado = new Alert(Alert.AlertType.ERROR);
+				cuidado.setTitle("Erro");
+				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
+				cuidado.show();
+			}else {
+				controlador = 100;
+		    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
+				Main.changeScreen("Caixa");
+			}
+	    	
 		}
 	    
 	    @FXML
@@ -230,7 +241,9 @@ public class controllerMesas implements Initializable{
 				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
 				cuidado.show();
 			}else {
+				controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
 				Main.changeScreen("Pedidos");
+				controlador = 100;
 			}
 			
 			
@@ -251,9 +264,17 @@ public class controllerMesas implements Initializable{
 		@FXML
 	    void setOnKeyPressed(MouseEvent event) {
 			if(controlador == 100) {
+				
 				System.out.println("alo");
 				cargo.setText(controllerLogin.getCodigoTeste());
 				controlador = 1;
+			}
+			if(controllerCaixa.getB() ==2) {
+				getMesaSelecionada().setDisponivel(true);
+				getMesaSelecionada().setNomeReserva(null);
+			     getMesaSelecionada().setNumeroPessoas(0);
+				setMesaSelecionada(getMesaSelecionada()) ;
+				controllerCaixa.setB(0);
 			}
 			
 	    }

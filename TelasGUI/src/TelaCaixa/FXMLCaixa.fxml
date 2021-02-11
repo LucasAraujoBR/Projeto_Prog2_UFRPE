@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCaixa.controllerCaixa">
+<AnchorPane onMouseMoved="#mouseAtt" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCaixa.controllerCaixa">
    <children>
       <Label layoutX="255.0" layoutY="14.0" prefHeight="45.0" prefWidth="91.0" text="Caixa">
          <font>
@@ -23,8 +23,8 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <ListView fx:id="listContasAbertas" layoutX="57.0" layoutY="116.0" onEditCancel="#listarContas" onEditCommit="#listarContas" onEditStart="#listarContas" prefHeight="361.0" prefWidth="291.0" />
-      <Label layoutX="136.0" layoutY="88.0" text="Contas abertas">
+      <ListView fx:id="lvPedidosDaMesa" layoutX="57.0" layoutY="116.0" prefHeight="361.0" prefWidth="291.0" />
+      <Label layoutX="141.0" layoutY="88.0" text="Pedidos Mesa">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -34,5 +34,15 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Label fx:id="valorDaMesa" alignment="CENTER" layoutX="57.0" layoutY="505.0" prefHeight="20.0" prefWidth="291.0" textFill="RED">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="144.0" layoutY="477.0" prefHeight="17.0" prefWidth="124.0" text="Total a Pagar">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
