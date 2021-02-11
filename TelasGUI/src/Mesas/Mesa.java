@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import parteFuncionario.FunCAD;
 import partePedidos.pedCAD;
 
 public class Mesa implements Comparable<Mesa> {
@@ -33,9 +34,6 @@ public class Mesa implements Comparable<Mesa> {
 
    public void resetarMesa() {
 	   this.pedidos.clear();
-	   this.setDisponivel(true);
-	   this.setNumeroPessoas(0);
-	   this.setNomeReserva(null);
    }
 	public String getNomeReserva() {
     	return nomeReserva.get();
@@ -101,11 +99,19 @@ public class Mesa implements Comparable<Mesa> {
 	public void cadastrarPedido(pedCAD p) {
 		pedidos.add(p);
 	}
-	public void removerPedido(pedCAD p) {
-		pedidos.remove(p);
+	public void removerPedido(int p) {
+		if(pedidos.size() == 1) {
+			pedidos.clear();
+		}else {
+			pedidos.remove(p);
+			}
+		
+		
 	}
 	public ArrayList<pedCAD> getPedidos() {
-		return pedidos;
+		
+			return pedidos;
+		
 	}
 
 

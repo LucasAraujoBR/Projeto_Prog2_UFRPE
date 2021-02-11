@@ -138,14 +138,27 @@ public class ControllerTelaCadastro implements Initializable {
 		alerta.setHeaderText(null);
 		alerta.setContentText("Sistema não implementado!");
 		alerta.show();}
-		else {
+		else if(listViewCadastro.getSelectionModel().getSelectedItem().getCodFuncionario() == "gerente159"){
+			Alert alerta = new Alert(Alert.AlertType.WARNING);
+			alerta.setTitle("Alerta");
+			alerta.setHeaderText(null);
+			alerta.setContentText("Não Pode Remover o Gerente");
+			alerta.show();
+		}else {
 			for(int i  = 0;i<lista.size();i++) {
+				
 				if(listViewCadastro.getSelectionModel().getSelectedItem() == lista.get(i)) {
+					
+					controllerLogin.cad.removerCodFuncionario(lista.get(i).getCodFuncionario());
+					controllerLogin.cad.removerFuncionario(lista.get(i));
 					lista.remove(i);
 					
+					
+					
 				}
+		    /*controllerLogin.cad.removerCodFuncionario(listViewCadastro.getSelectionModel().getSelectedItem().getCodFuncionario());
 			controllerLogin.cad.removerFuncionario(listViewCadastro.getSelectionModel().getSelectedItem());
-			
+			controllerLogin.cad.cadrastarCodFuncionario2(codigo);*/
 			}
 		}
 	}

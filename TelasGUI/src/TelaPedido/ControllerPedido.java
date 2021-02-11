@@ -91,7 +91,7 @@ public class ControllerPedido implements Initializable {
 				listaCadPedidos.getItems().addAll(listP);
 				listaCadPedidos.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 			}else if(codigo == 5) {
-				pedCAD p = new pedCAD("Coca-Cola",quantidade,6.5);
+				pedCAD p = new pedCAD("Pastel",quantidade,6.5);
 				ped.cadPED(p);
 				listaCadPedidos.getItems().addAll(listP);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
@@ -145,7 +145,7 @@ public class ControllerPedido implements Initializable {
 		
 		int itemSelecionado = listaCadPedidos.getSelectionModel().getSelectedIndex();
 		listaCadPedidos.getItems().remove(itemSelecionado);
-		controllerMesas.getMesaSelecionada().removerPedido(listaCadPedidos.getSelectionModel().getSelectedItem());
+		controllerMesas.getMesaSelecionada().removerPedido(listaCadPedidos.getSelectionModel().getSelectedIndex()+1);
 
 	}
 

@@ -87,10 +87,10 @@ public class controllerLogin implements Initializable {
 				if (c.equals(codigoFuncionario)) {
 					controllerMesas.setControlador(100);
 					tem = true;
-					for(Funcionario d :retornaCad().listarFuncionario()) {
+					for(Funcionario d :cad.listarFuncionario()) {
 						if(c == d.getCodFuncionario()) {
 							controllerLogin.setCodigoTeste(d.getCargo());
-							System.out.println("alou2");
+							controllerMesas.setControlador(100);
 						}
 					}
 					

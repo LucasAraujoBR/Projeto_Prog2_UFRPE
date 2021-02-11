@@ -250,7 +250,7 @@ public class controllerMesas implements Initializable{
 		}
        
 	    
-	    public static Mesa mesaSelecionada;
+	    public static Mesa mesaSelecionada = new Mesa(0,0);
 		
 		
 		public static Mesa getMesaSelecionada() {
@@ -265,16 +265,20 @@ public class controllerMesas implements Initializable{
 	    void setOnKeyPressed(MouseEvent event) {
 			if(controlador == 100) {
 				
-				System.out.println("alo");
 				cargo.setText(controllerLogin.getCodigoTeste());
 				controlador = 1;
-			}
-			if(controllerCaixa.getB() ==2) {
-				getMesaSelecionada().setDisponivel(true);
-				getMesaSelecionada().setNomeReserva(null);
-			     getMesaSelecionada().setNumeroPessoas(0);
-				setMesaSelecionada(getMesaSelecionada()) ;
-				controllerCaixa.setB(0);
+				
+				for(int i = 0;i< listaDeMesas.size();i++) {
+					
+					if(getMesaSelecionada().equals(listaDeMesas.get(i))) {
+						listaDeMesas.get(i).resetarMesa();
+						listaDeMesas.get(i).setDisponivel(true);
+						listaDeMesas.get(i).setNomeReserva(null);
+						listaDeMesas.get(i).setNumeroReservas(0);
+						listaDeMesas.set(i, getMesaSelecionada());
+					}
+				}
+				
 			}
 			
 	    }
