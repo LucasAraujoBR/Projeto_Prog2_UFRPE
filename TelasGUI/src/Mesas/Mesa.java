@@ -19,8 +19,34 @@ public class Mesa implements Comparable<Mesa> {
      private IntegerProperty numeroReservas;
      private String dis;
      private ArrayList<pedCAD> pedidos;
-    public String getNomeReserva() {
+     private double preco;
+    
+     public double getPreco() {
+		return preco(this.pedidos);
+	}
+
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+		
+	}
+
+   public void resetarMesa() {
+	   this.pedidos.clear();
+	   this.setDisponivel(true);
+	   this.setNumeroPessoas(0);
+	   this.setNomeReserva(null);
+   }
+	public String getNomeReserva() {
     	return nomeReserva.get();
+	}
+	
+	public double preco(ArrayList<pedCAD> p) {
+		double preco = 0;
+		for(int i = 0;i <p.size();i++) {
+			preco = preco + p.get(i).getValor() * p.get(i).getQuantidade();
+		}
+		return preco;
 	}
 
 

@@ -11,15 +11,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import partePedidos.pedCAD;
 import TelaMesas.controllerMesas;
 
 public class controllerCaixa implements Initializable{
 
-    @FXML
+    public static int getB() {
+		return b;
+	}
+	public static void setB(int b) {
+		controllerCaixa.b = b;
+	}
+	@FXML
     private Button BTMfecharConta;
 
     @FXML
@@ -29,6 +37,7 @@ public class controllerCaixa implements Initializable{
     private ListView<pedCAD> listContasAbertas;
     @FXML
     private Button BTMInter;
+    public static int b = 0;
     
     @FXML
     void acaBTMInter(ActionEvent event) {
@@ -57,7 +66,15 @@ public class controllerCaixa implements Initializable{
     @FXML
 	void acaoBTMFecharConta(ActionEvent event) {
 		System.out.println(controllerMesas.getMesaSelecionada());
-    	
+		System.out.println(controllerMesas.getMesaSelecionada().getPreco());
+		
+		setB(2);
+	
+
+		controllerMesas.getMesaSelecionada().setDisponivel(true);
+		controllerMesas.getMesaSelecionada().setNomeReserva(null);
+		controllerMesas.getMesaSelecionada().setNumeroPessoas(0);
+		controllerMesas.getMesaSelecionada().resetarMesa();
     	/*if(sele==null||sele.isEmpty()) {
     		Alert alerta = new Alert(Alert.AlertType.WARNING);
         	alerta.setTitle("ERRO");
@@ -87,11 +104,14 @@ public class controllerCaixa implements Initializable{
 		listarContas(null);
 		
 	}
+	@FXML
+    private Label valorDaMesa = new Label();
 	
 	 @FXML
 	    void mouseAtt(MouseEvent event) {
 
 		   if(controllerMesas.getControlador() == 100) {
+			   valorDaMesa.setText("Total: "+controllerMesas.getMesaSelecionada().getPreco());
 			   listContasAbertas.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
 			   controllerMesas.setControlador(1);
 			}

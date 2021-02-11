@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import Mesas.ControleMesa;
 import Mesas.Mesa;
+import TelaCaixa.controllerCaixa;
 import application.Main;
 import application.controllerLogin;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -263,9 +264,17 @@ public class controllerMesas implements Initializable{
 		@FXML
 	    void setOnKeyPressed(MouseEvent event) {
 			if(controlador == 100) {
+				
 				System.out.println("alo");
 				cargo.setText(controllerLogin.getCodigoTeste());
 				controlador = 1;
+			}
+			if(controllerCaixa.getB() ==2) {
+				getMesaSelecionada().setDisponivel(true);
+				getMesaSelecionada().setNomeReserva(null);
+			     getMesaSelecionada().setNumeroPessoas(0);
+				setMesaSelecionada(getMesaSelecionada()) ;
+				controllerCaixa.setB(0);
 			}
 			
 	    }

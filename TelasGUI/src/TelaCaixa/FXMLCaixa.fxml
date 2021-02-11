@@ -34,5 +34,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Label fx:id="valorDaMesa" layoutX="50.0" layoutY="482.0" prefHeight="20.0" prefWidth="227.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
