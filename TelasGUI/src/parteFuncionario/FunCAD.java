@@ -15,47 +15,39 @@ public class FunCAD {
 		this.fun = new ArrayList<>();
 	}
 
-	public boolean cadrastarFuncionario(Funcionario p) {
-		
-		boolean FuncionarioExiste = false;
+	public void cadrastarFuncionario(Funcionario p) {
 		if (p != null) {
-			FuncionarioExiste = true;
+			boolean FuncionarioExiste = false;
 
 			for (Funcionario todas : fun) {
-				if (todas.getCodFuncionario().equals(p.getCodFuncionario())) {
-					FuncionarioExiste = false;
-					this.jaCadastrado = true;
-				}
-			}
-			
-			if (FuncionarioExiste) {	
-				this.fun.add(p);
-			}
-			
-		}
-		return FuncionarioExiste;
-
-	}
-	public void cadrastarCodFuncionario(ArrayList<String> codFuncionario2) {
-		if (codFuncionario2 != null) {
-			boolean FuncionarioExiste = true;
-
-			for (String todas : codFuncionario) {
-				if (todas.equals(codFuncionario2)) {
-					FuncionarioExiste = false;
+				if (todas.equals(p)) {
+					FuncionarioExiste = true;
 					this.jaCadastrado = true;
 					break;
 				}
 			}
-			if (FuncionarioExiste == true) {
-				this.codFuncionario.addAll(codFuncionario2);
+			if (FuncionarioExiste == false) {
+				this.fun.add(p);
 			}
 		}
 
 	}
-	
-	public void removerFuncionario(Funcionario p) {
-		fun.remove(p);
+	public void cadrastarCodFuncionario(ArrayList<String> codFuncionario2) {
+		if (codFuncionario2 != null) {
+			boolean FuncionarioExiste = false;
+
+			for (String todas : codFuncionario) {
+				if (todas.equals(codFuncionario2)) {
+					FuncionarioExiste = true;
+					this.jaCadastrado = true;
+					break;
+				}
+			}
+			if (FuncionarioExiste == false) {
+				this.codFuncionario.addAll(codFuncionario2);
+			}
+		}
+
 	}
 
 	public boolean isJaCadastrado() {

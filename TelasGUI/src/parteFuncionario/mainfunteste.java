@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class mainfunteste {
 
 	public static void main(String[] args) {
-		FunCAD fu = new FunCAD();
+		/*FunCAD fu = new FunCAD();
 		Funcionario f = new Funcionario("a", "a", "a", "a", "a", "a");
 		fu.cadrastarCodFuncionario("2424");
 		ArrayList<String> codigo = fu.listarCodFuncionario();
-		System.out.println(codigo);
+		System.out.println(codigo);*/
 		
 		
 		/*FunCAD fu = new FunCAD();

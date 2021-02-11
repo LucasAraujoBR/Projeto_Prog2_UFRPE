@@ -18,35 +18,31 @@ import javafx.scene.input.ScrollEvent;
 import parteFuncionario.FunCAD;
 import parteFuncionario.Funcionario;
 import TelaCadastro.ControllerTelaCadastro;
-import TelaMesas.controllerMesas;
 
 /*OBS: SISTEMA DE VALIDAÇÃO DO LOGIN COM CODIGO AINDA NÃO DISCUTIDO*/
 public class controllerLogin implements Initializable {
+	FunCAD cadLogin = new FunCAD();
 	@FXML
 	private Button BTM01;
 	@FXML
 	private TextField CodTXT;
-	
-	public static FunCAD cad = new FunCAD();
-	ArrayList<String> codigo = controllerLogin.cad.listarCodFuncionario();
-	
-	private static String codigoTeste;
-	
-	public static String getCodigoTeste() {
-		return codigoTeste;
-	}
-
-	public static void setCodigoTeste(String codigoTeste) {
-		controllerLogin.codigoTeste = codigoTeste;
-	}
 
 	@FXML
 	private TextField senhaTXT;
 
 	@FXML
 	private Button BTMCadastrar;
-	
+
 	ArrayList<String> codFuncionario2 = new ArrayList<String>();
+
+	public String retornaCodF() {
+		String cod = CodTXT.getText();
+		return cod;
+		/*
+		 * 123 Garçom 012 Caixa 011 Cozinha gerente159 Gerente
+		 */
+
+	}
 
 	@FXML
 	void acaBTMCadastrar(ActionEvent event) {
@@ -78,24 +74,16 @@ public class controllerLogin implements Initializable {
 			alerta.setContentText("Favor,informar o campo <Código de usuário>");
 			alerta.show();
 		}
-		
+
 		if (codigoFuncionario.length() != 0 && senhaGerente.length() == 0) {
 			// testa se o codigo ja está cadastrado da arrayList codFuncionario2
+			codFuncionario2.addAll(cadLogin.listarCodFuncionario()); // tentativa de pegar os codigos cadastrados
 			System.out.println(codFuncionario2);
 			boolean tem = false;
-			for (String c : cad.listarCodFuncionario()) {
+			for (String c : codFuncionario2) {
 				if (c.equals(codigoFuncionario)) {
-					controllerMesas.setControlador(100);
 					tem = true;
-					for(Funcionario d :retornaCad().listarFuncionario()) {
-						if(c == d.getCodFuncionario()) {
-							controllerLogin.setCodigoTeste(d.getCargo());
-							System.out.println("alou2");
-						}
-					}
-					
-					
-					}
+				}
 			}
 			if (tem == true) {
 				Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -135,14 +123,6 @@ public class controllerLogin implements Initializable {
 			Main.changeScreen("Mesas");
 			CodTXT.clear();
 			senhaTXT.clear();
-			for(Funcionario d :retornaCad().listarFuncionario()) {
-				if("gerente159" == d.getCodFuncionario()) {
-					System.out.println("alou");
-					controllerMesas.setControlador(100);
-					controllerLogin.setCodigoTeste(d.getCargo());
-				
-				}
-			}
 		}
 
 		if (senhaG != 1234) {
@@ -155,23 +135,17 @@ public class controllerLogin implements Initializable {
 		}
 
 	}
-	public FunCAD retornaCad() {
-		return controllerLogin.cad;
-	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		codFuncionario2.addAll(cad.listarCodFuncionario());
-		codFuncionario2.add("123");     //Garçom
-		codFuncionario2.add("012");		//Caixa
-		codFuncionario2.add("001");		//Cozinha
-		codFuncionario2.add("gerente159");		//Funcionário Mesa
-		ArrayList<String> codFuncionario = cad.listarCodFuncionario();
-		cad.cadrastarCodFuncionario(codFuncionario2);
-		
-	//	cad.cadrastarCodFuncionario(codFuncionario);
-		System.out.println("Código de Funcionário: "+cad.listarCodFuncionario());
+		codFuncionario2.addAll(cadLogin.listarCodFuncionario());
+		codFuncionario2.add("123"); // Garçom
+		codFuncionario2.add("012"); // Caixa
+		codFuncionario2.add("001"); // Cozinha
+		codFuncionario2.add("gerente159"); // Gerente
+		cadLogin.cadrastarCodFuncionario(codFuncionario2);
+		System.out.println("Código de Funcionário: " + cadLogin.listarCodFuncionario());
 		System.out.println("Código de Gerente: gerente159 , Senha do Gerente: 1234");
+
 	}
 }
