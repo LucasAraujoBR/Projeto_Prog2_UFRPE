@@ -175,7 +175,6 @@ public class controllerMesas implements Initializable{
 	   
 		public void initi() {
 	    	
-	    	System.out.println("teste100");
 		    tabela.setItems(listaDeMesas);
 	    	taNome.setCellValueFactory(new PropertyValueFactory<Mesa, String>("nomeMesa"));
 	    	taCodigo.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroDaMesa"));

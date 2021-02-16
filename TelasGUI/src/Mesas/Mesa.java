@@ -97,7 +97,16 @@ public class Mesa implements Comparable<Mesa> {
 	}*/
 	
 	public void cadastrarPedido(pedCAD p) {
-		pedidos.add(p);
+		boolean pedidoExiste = false;
+		for(pedCAD d : pedidos) {
+			if (d.getNome() == p.getNome()) {
+				pedidoExiste = true;
+				d.setQuantidade(d.getQuantidade()+p.getQuantidade());
+			}
+		}
+		if(!pedidoExiste) {
+			pedidos.add(p);
+		}	
 	}
 	public void removerPedido(int p) {
 		if(pedidos.size() == 1) {
