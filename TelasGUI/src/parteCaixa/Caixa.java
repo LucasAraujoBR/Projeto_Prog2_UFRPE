@@ -78,11 +78,11 @@ public class Caixa {
 		String nota11 = String.format("________________________________________________\n");
 		String nota12 = String.format("T O T A L  R $                              %.2f\n", controllerMesas.getMesaSelecionada().preco(pedidos));
 		
-        String nota8 = teste32(pedidos,0);
+        String nota8 = notaFiscal(pedidos,0);
         String cumpom = nota + nota2 + nota3 + nota4 + nota5+nota7+nota8;
 		//String cumpom = nota + nota2 + nota3 + nota4 + nota5+nota7+nota8+nota9+nota10+nota11+nota12;
 		for(int i = 1;i<pedidos.size();i++) {
-			cumpom = cumpom +teste32(pedidos,i);
+			cumpom = cumpom +notaFiscal(pedidos,i);
 		}
 		
 		
@@ -91,7 +91,7 @@ public class Caixa {
 	}
 
 
-	public String teste32 (ArrayList<pedCAD> pedidos,int numero) {
+	public String notaFiscal (ArrayList<pedCAD> pedidos,int numero) {
 		String nota10 ="";
 		if(numero +1 >= 100)
 			System.out.printf ("%d         %s  \n", numero+1,pedidos.get(numero).getNome());
