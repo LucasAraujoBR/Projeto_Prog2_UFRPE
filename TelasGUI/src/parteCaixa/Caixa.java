@@ -1,6 +1,7 @@
 package parteCaixa;
 
 import Mesas.Mesa;
+import TelaMesas.controllerMesas;
 import partePedidos.Pedidos;
 import partePedidos.pedCAD;
 
@@ -60,7 +61,52 @@ public class Caixa {
 		System.out.println("________________________________________________");
 		System.out.printf("T O T A L  R $                              %.2f\n", gerarConta());
 		
+	} 
+	
+	public String cupomFiscal(ArrayList<pedCAD> pedidos) {
+		
+		LocalDateTime data = LocalDateTime.now();
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+		String nota = String.format("%s   %s\n", data.toLocalDate().format(formato), data.toLocalTime().toString());
+		String nota2 = String.format(("________________________________________________\n"));
+		String nota3 = String.format(("          C U P O M     F I S C A L\n"));
+		String nota4 = String.format(("ITEM          DESCRICAO\n"));
+		String nota5 = String.format(("QTD.   UN    VL.UNIT(R$)             VL.ITEM(R$)\n"));
+		String nota7 = String.format("________________________________________________\n");
+		String nota9 = String.format(("                                     -----------\n"));
+		String nota10 = String.format("Subtotal R$                                %.2f\n",controllerMesas.getMesaSelecionada().preco(pedidos));
+		String nota11 = String.format("________________________________________________\n");
+		String nota12 = String.format("T O T A L  R $                              %.2f\n", controllerMesas.getMesaSelecionada().preco(pedidos));
+		
+        String nota8 = teste32(pedidos,0);
+        String cumpom = nota + nota2 + nota3 + nota4 + nota5+nota7+nota8;
+		//String cumpom = nota + nota2 + nota3 + nota4 + nota5+nota7+nota8+nota9+nota10+nota11+nota12;
+		for(int i = 1;i<pedidos.size();i++) {
+			cumpom = cumpom +teste32(pedidos,i);
+		}
+		
+		
+		return cumpom+nota9+nota10+nota11+nota12;
+		
 	}
+
+
+	public String teste32 (ArrayList<pedCAD> pedidos,int numero) {
+		String nota10 ="";
+		if(numero +1 >= 100)
+			System.out.printf ("%d         %s  \n", numero+1,pedidos.get(numero).getNome());
+		else if(numero +1 >= 10 )
+			System.out.printf ("0%d         %s  \n", numero+1,pedidos.get(numero).getNome());
+		else if(numero +1 >= 1) 
+		nota10 = String.format("00%d         %s  \n",numero+1,pedidos.get(numero).getNome());
+		
+		
+		String nota100 = String.format("      %d.000 UN x %.2f                 %.2f\n", pedidos.get(numero).getQuantidade(), pedidos.get(numero).getValor(), (pedidos.get(numero).getValor() * pedidos.get(numero).getQuantidade()));
+		
+		return nota10+ nota100;
+	}
+	
+	
 	public void gerarLucro() {
 		
 	}

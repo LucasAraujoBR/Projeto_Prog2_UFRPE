@@ -1,5 +1,6 @@
 package TelaCaixa;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +10,25 @@ import Mesas.Mesa;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import parteCaixa.Caixa;
 import partePedidos.pedCAD;
 import TelaMesas.controllerMesas;
 
 public class controllerCaixa implements Initializable{
 	
-   
+  private static Scene sceneNovasMesas;
+	
+    private static Stage cena2  = new Stage();
 	private Caixa caixa = new Caixa();
 	private List<Mesa> contasDoDia = new ArrayList<>();
 	@FXML
@@ -49,12 +56,12 @@ public class controllerCaixa implements Initializable{
     }
     
     @FXML
-	void acaoBTMFecharConta(ActionEvent event) {
-    	controllerMesas.setControlador(100);
+	void acaoBTMFecharConta(ActionEvent event) throws IOException {
+    	//controllerMesas.setControlador(101);
 		contasDoDia.add(controllerMesas.getMesaSelecionada());
 		caixa.setClienteDaMesa(controllerMesas.getMesaSelecionada());
 		caixa.receberDinheiro();
-		lvPedidosDaMesa.getItems().clear();
+		//lvPedidosDaMesa.getItems().clear();
 		
 		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
     	alerta.setTitle("Pagando Conta");
@@ -62,9 +69,32 @@ public class controllerCaixa implements Initializable{
     	alerta.setContentText("Cupom fiscal impresso no Console!");
     	alerta.show();
     	
-		
+    	FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("FXMLNota.fxml"));
+        Parent parentNovasMesas = novasMesas.load();
+        sceneNovasMesas = new Scene(parentNovasMesas,293.0,230.0+controllerMesas.getMesaSelecionada().getPedidos().size() * 30);
+        cena2.setTitle("Nota Fiscal");
+        cena2.setScene(sceneNovasMesas);
+        cena2.showAndWait();
+        lvPedidosDaMesa.getItems().clear();
+        controllerMesas.setControlador(100);
     	Main.changeScreen("Mesas");
 	}
+    
+    @FXML
+    private Label textoCupom;
+    
+    @FXML
+    void mouseMoved(MouseEvent event) {
+    	if(controllerMesas.getControlador()== 1) {
+    		System.out.println("alo");
+    	textoCupom.setText(caixa.cupomFiscal(controllerMesas.getMesaSelecionada().getPedidos()));
+    	controllerMesas.setControlador(2);
+    	}
+         
+    }
+    
+    
+    
 	@FXML
 	void acaoBTMFecharCaixa() {
 		

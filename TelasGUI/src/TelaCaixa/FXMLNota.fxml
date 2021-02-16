@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane onMouseMoved="#mouseMoved" prefHeight="101.0" prefWidth="147.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCaixa.controllerCaixa">
+   <children>
+      <Pane layoutX="-108.0" layoutY="-167.0" onMouseMoved="#mouseMoved" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="textoCupom" layoutX="141.0" layoutY="169.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
