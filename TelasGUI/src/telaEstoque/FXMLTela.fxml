@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="telaPrincipal" prefHeight="447.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telaEstoque.FXMLButtonController">
+   <children>
+      <SplitPane fx:id="PaneSplit" dividerPositions="0.5094017094017094" layoutX="-3.0" prefHeight="447.0" prefWidth="587.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="297.0">
+               <children>
+                  <ListView fx:id="alimentosList" layoutX="14.0" layoutY="91.0" prefHeight="301.0" prefWidth="276.0" />
+                  <Text fill="#1b51d0" fontSmoothingType="LCD" layoutX="87.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque" textAlignment="CENTER">
+                     <font>
+                        <Font name="Consolas" size="34.0" />
+                     </font></Text>
+                  <Button layoutX="14.0" layoutY="47.0" mnemonicParsing="false" onAction="#alterarAlimento" text="Adicionar" />
+                  <Button fx:id="remover" layoutX="83.0" layoutY="47.0" mnemonicParsing="false" onAction="#removerAlimento" text="Remover" />
+                  <Button layoutX="149.0" layoutY="47.0" mnemonicParsing="false" onAction="#gerarRelatorio" text="Relatórios" />
+                  <Button layoutX="220.0" layoutY="47.0" mnemonicParsing="false" onAction="#RetirarUnidades" text="Dar Baixa" />
+                  <Button layoutX="111.0" layoutY="399.0" minHeight="18.0" mnemonicParsing="false" onAction="#detalharAlimento" prefHeight="32.0" prefWidth="83.0" text="DETALHAR" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="445.0" prefWidth="497.0">
+               <children>
+                  <Text fx:id="destaqueAlimento" fill="#1313da" layoutX="6.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alimento :" visible="false">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text fx:id="AlimentoEscolhido" fill="#391ab5" fontSmoothingType="LCD" layoutX="93.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="111.0">
+                     <font>
+                        <Font name="Consolas" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="descNome" layoutX="4.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Do Alimento: " visible="false" />
+                  <TextField fx:id="NomeDoAlimento" layoutX="32.0" layoutY="133.0" prefHeight="26.0" prefWidth="195.0" visible="false" />
+                  <Text fx:id="descData" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data De Vencimento : " visible="false" />
+                  <TextField fx:id="DataDeVencimento" layoutX="32.0" layoutY="188.0" prefHeight="26.0" prefWidth="92.0" visible="false" />
+                  <Text fx:id="descCodigo" layoutX="2.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código De Barra : " visible="false" />
+                  <TextField fx:id="CodigoDeBarra" layoutX="32.0" layoutY="246.0" prefHeight="26.0" prefWidth="195.0" visible="false" />
+                  <Text fx:id="descQtdProduto" layoutX="2.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade do Produto : " visible="false" />
+                  <TextField fx:id="QteDoProduto" layoutX="32.0" layoutY="305.0" prefHeight="26.0" prefWidth="38.0" visible="false" />
+                  <Button fx:id="btAjuda" layoutX="226.0" layoutY="2.0" minHeight="16.0" minWidth="31.0" mnemonicParsing="false" onAction="#btinterrogacao" prefHeight="32.0" prefWidth="30.0" text="?" />
+                  <Button fx:id="botaoGerarProduto" layoutX="97.0" layoutY="356.0" mnemonicParsing="false" onAction="#gerarNovoAlimento" text="SALVAR" visible="false" />
+                  <Text fx:id="descQteAtual" layoutX="4.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de unidades atual : " visible="false" wrappingWidth="164.853515625">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="qtdAtual" layoutX="169.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="42.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="retiradaEstoque" layoutX="5.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Retirada : " visible="false" wrappingWidth="130.853515625">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="28.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="qtdASerRetirada" layoutX="159.0" layoutY="248.0" prefHeight="48.0" prefWidth="66.0" visible="false">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="botaoRetirada" layoutX="87.0" layoutY="360.0" mnemonicParsing="false" onAction="#confirmarRetiradaDeUnidades" text="RETIRAR" visible="false" />
+                  <TableView fx:id="Tabela" layoutX="4.0" layoutY="58.0" prefHeight="364.0" prefWidth="366.0" visible="false">
+                    <columns>
+                      <TableColumn fx:id="nomeAlimen" prefWidth="110.0" text="Nome do Alimento" />
+                      <TableColumn fx:id="vencimentoAlimen" prefWidth="101.0" text="Vencimento" />
+                        <TableColumn fx:id="codigoAlimen" minWidth="4.0" prefWidth="81.0" text="Código" />
+                        <TableColumn fx:id="qteAlimen" prefWidth="74.0" text="Quantidade" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btView" layoutX="443.0" layoutY="388.0" mnemonicParsing="false" onAction="#atualizarTabela" text="Visualizar" />
+                  <Button fx:id="btBackPage" layoutX="517.0" layoutY="388.0" mnemonicParsing="false" onAction="#voltarTela" text="Voltar" />
+                  <Button fx:id="btPrint" layoutX="395.0" layoutY="388.0" mnemonicParsing="false" onAction="#printEstoque" text="Print" />
+                  <Text fx:id="relDataVencimento" layoutX="396.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data máxima de vencimento" />
+                  <TextField fx:id="fieldRelDataVencimento" layoutX="425.0" layoutY="124.0" prefHeight="26.0" prefWidth="92.0" />
+                  <Text fx:id="relMinEstoque" layoutX="396.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor Mínimo em estoque" />
+                  <TextField fx:id="fieldRelMinEstoque" layoutX="453.0" layoutY="201.0" prefHeight="26.0" prefWidth="38.0" />
+                  <Text fx:id="relTxtEstoque" layoutX="86.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório do estoque" visible="false">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="21.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="6.0" layoutY="2.0" mnemonicParsing="false" onAction="#voltarTelaAnterior" text="Voltar Tela" textAlignment="CENTER" textFill="#f83636">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
