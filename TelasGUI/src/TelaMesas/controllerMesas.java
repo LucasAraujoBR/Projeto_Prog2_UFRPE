@@ -110,7 +110,13 @@ public class controllerMesas implements Initializable{
 			
 			
 			
-		}else {
+		}else if(tabela.getSelectionModel().getSelectedItem().getPedidos().size() >0){
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Essa Mesa ja possui pedido feito");
+			cuidado.setContentText("Feche a conta da mesa");
+			cuidado.show();
+		}else{
 			controllerMesas.setMesa(null);
 			controllerMesas.setMesa(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()));
 			mesa.setDisponivel(true);
@@ -220,9 +226,14 @@ public class controllerMesas implements Initializable{
 	    	if(tabela.getSelectionModel().isEmpty()) {
 				Alert cuidado = new Alert(Alert.AlertType.ERROR);
 				cuidado.setTitle("Erro");
-				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
+				cuidado.setHeaderText("Selecione uma para ver a conta");
 				cuidado.show();
-			}else {
+			}else if(tabela.getSelectionModel().getSelectedItem().getPedidos().size() == 0){
+				Alert cuidado = new Alert(Alert.AlertType.ERROR);
+				cuidado.setTitle("Erro");
+				cuidado.setHeaderText("Adicione pedidos a mesa");
+				cuidado.show();
+			}else{
 				controlador = 100;
 		    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
 				Main.changeScreen("Caixa");
@@ -239,6 +250,12 @@ public class controllerMesas implements Initializable{
 				Alert cuidado = new Alert(Alert.AlertType.ERROR);
 				cuidado.setTitle("Erro");
 				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
+				cuidado.show();
+			}else if(tabela.getSelectionModel().getSelectedItem().getDisponivel()){
+				Alert cuidado = new Alert(Alert.AlertType.ERROR);
+				cuidado.setTitle("Erro");
+				cuidado.setHeaderText("Selecione uma mesa com reserva para colocar os pedidos");
+				cuidado.setContentText(null);
 				cuidado.show();
 			}else {
 				controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
@@ -285,8 +302,30 @@ public class controllerMesas implements Initializable{
 		
 		   @FXML
 		    void acaoFecharCaixa(ActionEvent event) throws IOException {
-			   controlador = 100;
-			   Main.changeScreen("Fechar");
+			   boolean disponivel = true;
+			   
+			   for(Mesa m : listaDeMesas) {
+				   if(!m.getDisponivel()) {
+					   disponivel = false;
+				   }
+			   }
+			   if(disponivel && controllerCaixa.listaContas().size() > 0) {
+				   controlador = 100;
+				   Main.changeScreen("Fechar");
+			   }else if(!disponivel) {
+				   Alert cuidado = new Alert(Alert.AlertType.ERROR);
+					cuidado.setTitle("Erro");
+					cuidado.setHeaderText("Existe alguma mesa reservada ainda");
+					cuidado.setContentText(null);
+					cuidado.show();
+			   }else {
+				   Alert cuidado = new Alert(Alert.AlertType.ERROR);
+					cuidado.setTitle("Erro");
+					cuidado.setHeaderText("Ainda não possui contas");
+					cuidado.setContentText(null);
+					cuidado.show();
+			   }
+			   
 		    }
 		
 	 

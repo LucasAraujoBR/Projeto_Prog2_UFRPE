@@ -16,14 +16,15 @@ public class Main extends Application {
 	private static Scene TelaMesas;
 	private static Scene TelaPedidos;
 	private static Scene TelaCadastro;
+	private static Scene TelaEstoque;
 	private static Scene TelaFecharCaixa;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		stage = primaryStage;
 		primaryStage.setTitle("RURADEVS Restaurant Control");
-		Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
-		Login = new Scene(root, 408, 320);
+		Parent login = FXMLLoader.load(getClass().getResource("../application/FXMLLogin.fxml"));
+		Login = new Scene(login, 408, 320);
 
 		Parent caixa = FXMLLoader.load(getClass().getResource("../TelaCaixa/FXMLCaixa.fxml"));
 		TelaCaixa = new Scene(caixa, 600, 600);
@@ -36,6 +37,9 @@ public class Main extends Application {
 		
 		Parent cadastro = FXMLLoader.load(getClass().getResource("../TelaCadastro/FXMLCadastro.fxml"));
 		TelaCadastro = new Scene(cadastro,600,600);
+		
+		Parent estoque = FXMLLoader.load(getClass().getResource("../telaEstoque/FXMLTela.fxml"));
+		TelaEstoque = new Scene(estoque,600,600);
 		
 		Parent fecharCaixa = FXMLLoader.load(getClass().getResource("../TelaMesas/FXMLFecharCaixa.fxml"));
 		TelaFecharCaixa = new Scene(fecharCaixa,600,600);
@@ -60,6 +64,9 @@ public class Main extends Application {
 			break;
 		case "Cadastro":
 			stage.setScene(TelaCadastro);
+			break;
+		case "Estoque":
+			stage.setScene(TelaEstoque);
 			break;
 		case "Fechar":
 			stage.setScene(TelaFecharCaixa);

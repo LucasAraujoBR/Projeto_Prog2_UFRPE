@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCadastro.ControllerTelaCadastro">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaCadastro.ControllerTelaCadastro">
    <children>
       <Label layoutX="185.0" layoutY="12.0" prefHeight="30.0" prefWidth="227.0" text="Cadastro de Funcionários">
          <font>
@@ -39,5 +39,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="BTMEstoque" layoutX="8.0" layoutY="361.0" mnemonicParsing="false" onAction="#acaoBTMEstoque" text="Estoque" />
    </children>
 </AnchorPane>

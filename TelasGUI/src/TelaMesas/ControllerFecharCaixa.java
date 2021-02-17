@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import Mesas.Mesa;
 import TelaCaixa.controllerCaixa;
+import application.Main;
 import application.controllerLogin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,7 +35,8 @@ public class ControllerFecharCaixa implements Initializable {
     
 	 @FXML
     void fecharCaixa(ActionEvent event) {
-		    
+		 controllerCaixa.limparContas();
+		 Main.changeScreen("Login");
     }
 	 
 	 @SuppressWarnings("unchecked")
@@ -55,7 +57,11 @@ public class ControllerFecharCaixa implements Initializable {
 	 @FXML
 	    void atualizar(MouseEvent event) {
 		 if(controllerMesas.getControlador() == 100) {
-				
+			 double total = 0;
+			 for(Mesa m:controllerCaixa.listaContas()) {
+				 total = total + m.getPreco();
+			 }
+			 totalConta.setText("Total :"+total);	
 			 listaDeContas.addAll(controllerCaixa.listaContas());
 			 controllerMesas.setControlador(1); 
 		 

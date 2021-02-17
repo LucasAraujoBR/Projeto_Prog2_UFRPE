@@ -26,7 +26,7 @@ import TelaMesas.controllerMesas;
 
 public class controllerCaixa implements Initializable{
 	
-  private static Scene sceneNovasMesas;
+   private static Scene sceneNovasMesas;
 	
     private static Stage cena2  = new Stage();
 	private Caixa caixa = new Caixa();
@@ -39,14 +39,16 @@ public class controllerCaixa implements Initializable{
 	public static void  addContas(Mesa m){
 		ContasDodia.add(m);
 	}
-	private List<Mesa> contasDoDia = new ArrayList<>();
+	public static void  limparContas(){
+		ContasDodia.clear();
+	}
 	@FXML
     private Label valorDaMesa = new Label();
 	
 	@FXML
     private Button BTMfecharConta;
 	
-	private Mesa mesa;
+	private Mesa mesa = new Mesa(0,0);
 
     public Mesa getMesa() {
 		return mesa;
@@ -54,6 +56,8 @@ public class controllerCaixa implements Initializable{
 	public void setMesa(Mesa mesa) {
 		this.mesa = mesa;
 	}
+	
+	
 	@FXML
     private Button BTMfecharCaixa;
     /*SUBSTITUIR STRING PELA CLASSE CONTAS*/
@@ -61,7 +65,6 @@ public class controllerCaixa implements Initializable{
     private ListView<pedCAD> lvPedidosDaMesa;
     @FXML
     private Button BTMInter;
-    public static int b = 0;
     
     @FXML
     void acaBTMInter(ActionEvent event) {
@@ -75,18 +78,16 @@ public class controllerCaixa implements Initializable{
     @FXML
 	void acaoBTMFecharConta(ActionEvent event) throws IOException {
     	//controllerMesas.setControlador(101);
-    	controllerCaixa.addContas(controllerMesas.getMesaSelecionada());
-    	setMesa(controllerMesas.getMesaSelecionada());
-		contasDoDia.add(getMesa());
+    	mesa.setNomeReserva(controllerMesas.getMesaSelecionada().getNomeReserva());
+    	mesa.setNumeroDaMesa(controllerMesas.getMesaSelecionada().getNumeroDaMesa());
+    	for(pedCAD p : controllerMesas.getMesaSelecionada().getPedidos()) {
+    		mesa.cadastrarPedido(p);
+    	}
+    	addContas(mesa);
 		caixa.setClienteDaMesa(controllerMesas.getMesaSelecionada());
 		caixa.receberDinheiro();
 		//lvPedidosDaMesa.getItems().clear();
 		
-		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-    	alerta.setTitle("Pagando Conta");
-    	alerta.setHeaderText(null);
-    	alerta.setContentText("Cupom fiscal impresso no Console!");
-    	alerta.show();
     	
     	FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("FXMLNota.fxml"));
         Parent parentNovasMesas = novasMesas.load();
@@ -94,7 +95,7 @@ public class controllerCaixa implements Initializable{
         cena2.setTitle("Nota Fiscal");
         cena2.setScene(sceneNovasMesas);
         cena2.showAndWait();
-        setMesa(null);
+        setMesa(new Mesa(0,0));
         lvPedidosDaMesa.getItems().clear();
         controllerMesas.setControlador(100);
     	Main.changeScreen("Mesas");
@@ -113,18 +114,6 @@ public class controllerCaixa implements Initializable{
     }
     
     
-    
-	@FXML
-	void acaoBTMFecharCaixa() {
-		
-		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-    	alerta.setTitle("Fechar caixa");
-    	alerta.setHeaderText(null);
-    	alerta.setContentText("Caixa encerrado!");
-    	alerta.show();
-    	Main.changeScreen("Login");
-    	lvPedidosDaMesa.getItems().clear();
-	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

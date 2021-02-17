@@ -13,12 +13,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="BTMfecharConta" layoutX="381.0" layoutY="134.0" mnemonicParsing="false" onAction="#acaoBTMFecharConta" text="Fechar Conta">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="BTMfecharCaixa" layoutX="383.0" layoutY="209.0" mnemonicParsing="false" onAction="#acaoBTMFecharCaixa" text="Fechar Caixa">
+      <Button fx:id="BTMfecharConta" layoutX="396.0" layoutY="265.0" mnemonicParsing="false" onAction="#acaoBTMFecharConta" text="Fechar Conta">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
