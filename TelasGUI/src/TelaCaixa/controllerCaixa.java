@@ -30,14 +30,31 @@ public class controllerCaixa implements Initializable{
 	
     private static Stage cena2  = new Stage();
 	private Caixa caixa = new Caixa();
+	
+	private static ArrayList<Mesa> ContasDodia = new ArrayList<>();
+	
+	public static ArrayList<Mesa> listaContas(){
+		return ContasDodia;
+	}
+	public static void  addContas(Mesa m){
+		ContasDodia.add(m);
+	}
 	private List<Mesa> contasDoDia = new ArrayList<>();
 	@FXML
     private Label valorDaMesa = new Label();
 	
 	@FXML
     private Button BTMfecharConta;
+	
+	private Mesa mesa;
 
-    @FXML
+    public Mesa getMesa() {
+		return mesa;
+	}
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
+	@FXML
     private Button BTMfecharCaixa;
     /*SUBSTITUIR STRING PELA CLASSE CONTAS*/
     @FXML
@@ -58,7 +75,9 @@ public class controllerCaixa implements Initializable{
     @FXML
 	void acaoBTMFecharConta(ActionEvent event) throws IOException {
     	//controllerMesas.setControlador(101);
-		contasDoDia.add(controllerMesas.getMesaSelecionada());
+    	controllerCaixa.addContas(controllerMesas.getMesaSelecionada());
+    	setMesa(controllerMesas.getMesaSelecionada());
+		contasDoDia.add(getMesa());
 		caixa.setClienteDaMesa(controllerMesas.getMesaSelecionada());
 		caixa.receberDinheiro();
 		//lvPedidosDaMesa.getItems().clear();
@@ -75,6 +94,7 @@ public class controllerCaixa implements Initializable{
         cena2.setTitle("Nota Fiscal");
         cena2.setScene(sceneNovasMesas);
         cena2.showAndWait();
+        setMesa(null);
         lvPedidosDaMesa.getItems().clear();
         controllerMesas.setControlador(100);
     	Main.changeScreen("Mesas");
@@ -86,7 +106,6 @@ public class controllerCaixa implements Initializable{
     @FXML
     void mouseMoved(MouseEvent event) {
     	if(controllerMesas.getControlador()== 1) {
-    		System.out.println("alo");
     	textoCupom.setText(caixa.cupomFiscal(controllerMesas.getMesaSelecionada().getPedidos()));
     	controllerMesas.setControlador(2);
     	}
@@ -117,6 +136,7 @@ public class controllerCaixa implements Initializable{
 
 		   if(controllerMesas.getControlador() == 100) {
 			   caixa.setContaMesa(controllerMesas.getMesaSelecionada().getPreco());
+			   caixa.setClienteDaMesa(controllerMesas.getMesaSelecionada());
 			   valorDaMesa.setText("R$ "+controllerMesas.getMesaSelecionada().getPreco());
 			   
 			   lvPedidosDaMesa.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());

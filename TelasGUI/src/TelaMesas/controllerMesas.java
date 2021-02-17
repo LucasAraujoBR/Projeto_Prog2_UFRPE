@@ -33,6 +33,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
+import parteCaixa.Caixa;
 
 public class controllerMesas implements Initializable{
 	private static Scene sceneNovasMesas;
@@ -281,6 +282,12 @@ public class controllerMesas implements Initializable{
 			}
 			
 	    }
+		
+		   @FXML
+		    void acaoFecharCaixa(ActionEvent event) throws IOException {
+			   controlador = 100;
+			   Main.changeScreen("Fechar");
+		    }
 		
 	 
 		

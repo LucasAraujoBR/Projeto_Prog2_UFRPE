@@ -14,16 +14,16 @@ public class Caixa {
 	private static double cofre; 
 	private Mesa clienteDaMesa;
 	private double contaMesa;
-	private ArrayList<Mesa> contasDoDia;
-	
+	private static ArrayList<Mesa> contasDoDia;
 	public Caixa() {
 		this.descricao = "";
 		this.clienteDaMesa = null;
 		contaMesa = 0;
 		cofre = 0;
 		contasDoDia = new ArrayList<>();
+		
 	}
-	
+
 	public void receberDinheiro() {
 		boolean recebeu = confirmarPagamento(gerarConta());
 		if(recebeu) {
@@ -114,7 +114,7 @@ public class Caixa {
 		contasDoDia.clear();
 		
 	}
-	public ArrayList<Mesa> gerarContasDiarias() {
+	public static ArrayList<Mesa> gerarContasDiarias() {
 		return contasDoDia;
 	}
 	private boolean confirmarPagamento(double dinheiro) {

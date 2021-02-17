@@ -16,6 +16,7 @@ public class Main extends Application {
 	private static Scene TelaMesas;
 	private static Scene TelaPedidos;
 	private static Scene TelaCadastro;
+	private static Scene TelaFecharCaixa;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -35,6 +36,9 @@ public class Main extends Application {
 		
 		Parent cadastro = FXMLLoader.load(getClass().getResource("../TelaCadastro/FXMLCadastro.fxml"));
 		TelaCadastro = new Scene(cadastro,600,600);
+		
+		Parent fecharCaixa = FXMLLoader.load(getClass().getResource("../TelaMesas/FXMLFecharCaixa.fxml"));
+		TelaFecharCaixa = new Scene(fecharCaixa,600,600);
 		
 		primaryStage.setScene(Login);
 		primaryStage.show();
@@ -56,6 +60,9 @@ public class Main extends Application {
 			break;
 		case "Cadastro":
 			stage.setScene(TelaCadastro);
+			break;
+		case "Fechar":
+			stage.setScene(TelaFecharCaixa);
 			break;
 		}
 	}

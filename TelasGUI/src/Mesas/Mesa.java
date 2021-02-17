@@ -21,8 +21,20 @@ public class Mesa implements Comparable<Mesa> {
      private String dis;
      private ArrayList<pedCAD> pedidos;
      private double preco;
+     private double precoMesa;
+     
     
-     public double getPreco() {
+     public double getPrecoMesa() {
+		return preco(pedidos);
+	}
+
+
+	public void setPrecoMesa(double precoMesa) {
+		this.precoMesa = precoMesa;
+	}
+
+
+	public double getPreco() {
 		return preco(this.pedidos);
 	}
 
