@@ -22,7 +22,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		stage = primaryStage;
 		primaryStage.setTitle("RURADEVS Restaurant Control");
-		Parent login = FXMLLoader.load(getClass().getResource("../application/FXMLLogin.fxml"));
+		Parent login = FXMLLoader.load(getClass().getResource("../TelaLoginView/FXMLLogin.fxml"));
 		Login = new Scene(login, 408, 320);
 
 		Parent caixa = FXMLLoader.load(getClass().getResource("../TelasCaixaView/FXMLCaixa.fxml"));
