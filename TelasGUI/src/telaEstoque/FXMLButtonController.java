@@ -149,21 +149,6 @@ public class FXMLButtonController implements Initializable {
 			String informacaoAlerta = "Favor, informar o campo " + camposVazios;
 			alerta.setContentText(informacaoAlerta);
 			alerta.show();
-		} else {
-			Double valor = Double.parseDouble(NomeDoAlimento.getText().replace(",", "."));
-			int quantidade = Integer.parseInt(CodigoDeBarra.getText());
-			String descricao = DataDeVencimento.getText();
-			Produto novoObjeto = new Produto(valor, quantidade, descricao);
-			Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-
-			String mensagemInformacao = String.format("O valor para a venda do produto %s é R$ %.2f.",
-					novoObjeto.getDescricao(), novoObjeto.calcularTotal());
-
-			alerta.setTitle("Mensagem");
-			alerta.setContentText(null);
-			alerta.setContentText(mensagemInformacao);
-			alerta.show();
-
 		}
 	}
 	public void setarlista() {

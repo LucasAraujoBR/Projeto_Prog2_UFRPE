@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,7 +36,12 @@ public class ControllerFecharCaixa implements Initializable {
     
 	 @FXML
     void fecharCaixa(ActionEvent event) {
+		 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+	    	alerta.setTitle("Relatorio diario");
+	    	alerta.setHeaderText("Hoje teve "+ controllerCaixa.listaContas().size()+" Contas com o total de "+total+"R$ brutos");
+	    	alerta.showAndWait();
 		 controllerCaixa.limparContas();
+		 tabela.getItems().clear();
 		 Main.changeScreen("Login");
     }
 	 
@@ -53,11 +59,11 @@ public class ControllerFecharCaixa implements Initializable {
 
 	    	tabela.getColumns().addAll(taMesa,taCodigo,taNome,taTotal);
 		}
-	 
+	 double total = 0;
 	 @FXML
 	    void atualizar(MouseEvent event) {
 		 if(controllerMesas.getControlador() == 100) {
-			 double total = 0;
+			total = 0;
 			 for(Mesa m:controllerCaixa.listaContas()) {
 				 total = total + m.getPreco();
 			 }
