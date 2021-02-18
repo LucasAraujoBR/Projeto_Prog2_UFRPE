@@ -1,4 +1,5 @@
 package parteEstoque;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -11,12 +12,11 @@ public class Alimento {
 	public String vencimentoString;
 	private LocalDate dataVencimento;
 	private int qtdProduto;
-	//private Funcionario respEstoqueDoAlimento;
+	// private Funcionario respEstoqueDoAlimento;
 	private int qtdMinimaAlimento = 5;
-	
-	
+
 	DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	
+
 	public Alimento(String nomeProduto, String codigoBarra, String dataVencimento, int qtdProduto) {
 		this.nomeProduto = nomeProduto;
 		this.codigoBarra = codigoBarra;
@@ -25,7 +25,6 @@ public class Alimento {
 		this.vencimentoString = getDataVencimento().format(formatador);
 		setQtdMinimaParaFuncionamentoDeUmDia();
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -80,32 +79,32 @@ public class Alimento {
 		return qtdProduto;
 	}
 
-	public void setQtdProduto(int qtdProduto) throws Exception{
-		if(this.qtdProduto - qtdProduto <= 0) {
+	public void setQtdProduto(int qtdProduto) throws Exception {
+		if (this.qtdProduto - qtdProduto <= 0) {
 			this.qtdProduto = 0;
 			throw new Exception();
 		}
-		if(this.qtdProduto - qtdProduto <= this.qtdMinimaAlimento) {
+		if (this.qtdProduto - qtdProduto <= this.qtdMinimaAlimento) {
 			this.qtdProduto -= qtdProduto;
 			throw new Exception();
-		}
-		else {
+		} else {
 			this.qtdProduto -= qtdProduto;
 		}
 	}
 
-	
 	public int getQtdMinimaAlimento() {
 		return qtdMinimaAlimento;
 	}
-	
+
 	public void setQtdMinimaParaFuncionamentoDeUmDia() {
-		List<String> alimentosPadrao = Arrays.asList("feijao", "arroz", "fuba", "macaxeira", "peito bovino", "charque","macarrão");
+		List<String> alimentosPadrao = Arrays.asList("feijao", "arroz", "fuba", "macaxeira", "peito bovino", "charque",
+				"macarrão");
 		this.qtdMinimaAlimento = qtdMinimaAlimento;
-		
+
 	}
+
 	public String toString() {
 		return this.nomeProduto;
-	}	
-	
+	}
+
 }

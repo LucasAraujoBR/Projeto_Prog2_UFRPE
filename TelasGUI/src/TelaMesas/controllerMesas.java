@@ -2,8 +2,6 @@ package TelaMesas;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import Mesas.ControleMesa;
@@ -11,8 +9,6 @@ import Mesas.Mesa;
 import TelaCaixa.controllerCaixa;
 import application.Main;
 import application.controllerLogin;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,36 +20,27 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
-import parteCaixa.Caixa;
 
-public class controllerMesas implements Initializable{
+public class controllerMesas implements Initializable {
 	private static Scene sceneNovasMesas;
-	
-    private static Stage cena2  = new Stage();
-    private static Mesa mesa = new Mesa(0,0);
-    
-    
 
-	 public static Mesa getMesa() {
+	private static Stage cena2 = new Stage();
+	private static Mesa mesa = new Mesa(0, 0);
+
+	public static Mesa getMesa() {
 		return mesa;
 	}
 
 	public static void setMesa(Mesa mesa) {
 		controllerMesas.mesa = mesa;
 	}
-	
+
 	private static int controlador = 100;
-	
-	
 
 	public static int getControlador() {
 		return controlador;
@@ -62,61 +49,59 @@ public class controllerMesas implements Initializable{
 	public static void setControlador(int controlador) {
 		controllerMesas.controlador = controlador;
 	}
+
 // Para cadastrar reserva
 	@FXML
-    void colocarReserva(ActionEvent event) throws IOException {
-		
-		
-		if(tabela.getSelectionModel().isEmpty()) {
+	void colocarReserva(ActionEvent event) throws IOException {
+
+		if (tabela.getSelectionModel().isEmpty()) {
 			Alert cuidado = new Alert(Alert.AlertType.ERROR);
 			cuidado.setTitle("Erro");
 			cuidado.setHeaderText("Selecione uma mesa para colocar a reserva");
 			cuidado.show();
-		}else if(!listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()).getDisponivel()){
+		} else if (!listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()).getDisponivel()) {
 			Alert cuidado = new Alert(Alert.AlertType.ERROR);
 			cuidado.setTitle("Erro");
 			cuidado.setHeaderText("Essa Mesa ja possui uma reserva");
 			cuidado.show();
-		}else {
-			FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("FXMLReserva.fxml"));
-	        Parent parentNovasMesas = novasMesas.load();
-	        
-	        sceneNovasMesas = new Scene(parentNovasMesas,293.0,143.0);
-	       cena2.setTitle("Reserva");
-	       cena2.setScene(sceneNovasMesas);
-	       controllerMesas.setMesa(null);
-	       controllerMesas.setMesa(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()));
-	       
-	       cena2.showAndWait();
-	       
-	       listaDeMesas.set(tabela.getSelectionModel().getSelectedIndex(), mesa);
+		} else {
+			FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("../TelasMesasView/FXMLReserva.fxml"));
+			Parent parentNovasMesas = novasMesas.load();
+
+			sceneNovasMesas = new Scene(parentNovasMesas, 293.0, 143.0);
+			cena2.setTitle("Reserva");
+			cena2.setScene(sceneNovasMesas);
+			controllerMesas.setMesa(null);
+			controllerMesas.setMesa(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()));
+
+			cena2.showAndWait();
+
+			listaDeMesas.set(tabela.getSelectionModel().getSelectedIndex(), mesa);
 		}
-		
-   
-    }
+
+	}
+
 //Remove Reserva 
 	@FXML
-    void removeReserva(ActionEvent event) {
-		if(tabela.getSelectionModel().isEmpty()) {
+	void removeReserva(ActionEvent event) {
+		if (tabela.getSelectionModel().isEmpty()) {
 			Alert cuidado = new Alert(Alert.AlertType.ERROR);
 			cuidado.setTitle("Erro");
 			cuidado.setHeaderText("Selecione uma mesa para remover");
 			cuidado.show();
-		}else if(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()).getDisponivel()){
+		} else if (listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()).getDisponivel()) {
 			Alert cuidado = new Alert(Alert.AlertType.ERROR);
 			cuidado.setTitle("Erro");
 			cuidado.setHeaderText("Essa Mesa não possui nenhuma reserva");
 			cuidado.show();
-			
-			
-			
-		}else if(tabela.getSelectionModel().getSelectedItem().getPedidos().size() >0){
+
+		} else if (tabela.getSelectionModel().getSelectedItem().getPedidos().size() > 0) {
 			Alert cuidado = new Alert(Alert.AlertType.ERROR);
 			cuidado.setTitle("Erro");
 			cuidado.setHeaderText("Essa Mesa ja possui pedido feito");
 			cuidado.setContentText("Feche a conta da mesa");
 			cuidado.show();
-		}else{
+		} else {
 			controllerMesas.setMesa(null);
 			controllerMesas.setMesa(listaDeMesas.get(tabela.getSelectionModel().getSelectedIndex()));
 			mesa.setDisponivel(true);
@@ -124,211 +109,197 @@ public class controllerMesas implements Initializable{
 			mesa.setNumeroReservas(0);
 			listaDeMesas.set(tabela.getSelectionModel().getSelectedIndex(), mesa);
 		}
-			
-		}   
-	 
-	 //tabelas e colunas
-     private TableColumn<Mesa, String> taNome  = new TableColumn<Mesa,String>();
-	 
-	 @FXML
-	    private TableView<Mesa> tabela = new TableView<Mesa>();
-	 
-	 
-	  private TableColumn<Mesa, Integer> taCodigo= new TableColumn<Mesa, Integer>("Codigo"); 
-	  private TableColumn<Mesa, Integer> taNumero= new TableColumn<Mesa, Integer>("Capacidade");
-	  private TableColumn<Mesa, Boolean> taDisponibilidade= new TableColumn<Mesa, Boolean>("Disponibilidade");
-	  private TableColumn<Mesa, Boolean> taNomeReserva= new TableColumn<Mesa, Boolean>("Nome");
-	  @SuppressWarnings("rawtypes")
-	  private TableColumn taReserva = new TableColumn("Reserva");
-	  @SuppressWarnings( "rawtypes")
-	  private TableColumn taInfo= new TableColumn("Informação Da Mesa");
-	  private TableColumn<Mesa, Integer> taNumPessoas= new TableColumn<Mesa, Integer>("Pessoas");
 
-	    ObservableList<Mesa> listaDeMesas = FXCollections.observableArrayList();
-	    
- // Para cadastrar Mesas
-	    @FXML
-	    void novaMesa(ActionEvent event) throws IOException {
-	         FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("FXMLNovasMesas.fxml"));
-	         Parent parentNovasMesas = novasMesas.load();
-	        sceneNovasMesas = new Scene(parentNovasMesas,293.0,143.0);
-	        cena2.setTitle("Mesas");
-	        cena2.setScene(sceneNovasMesas);
-	        cena2.showAndWait();
-	        if(controlador == 0) {
-	        listaDeMesas.add(mesa);
-	        controlador = 1;
-	        }
-	    
-	       
-	    }
-	    
+	}
+
+	// tabelas e colunas
+	private TableColumn<Mesa, String> taNome = new TableColumn<Mesa, String>();
+
+	@FXML
+	private TableView<Mesa> tabela = new TableView<Mesa>();
+
+	private TableColumn<Mesa, Integer> taCodigo = new TableColumn<Mesa, Integer>("Codigo");
+	private TableColumn<Mesa, Integer> taNumero = new TableColumn<Mesa, Integer>("Capacidade");
+	private TableColumn<Mesa, Boolean> taDisponibilidade = new TableColumn<Mesa, Boolean>("Disponibilidade");
+	private TableColumn<Mesa, Boolean> taNomeReserva = new TableColumn<Mesa, Boolean>("Nome");
+	@SuppressWarnings("rawtypes")
+	private TableColumn taReserva = new TableColumn("Reserva");
+	@SuppressWarnings("rawtypes")
+	private TableColumn taInfo = new TableColumn("Informação Da Mesa");
+	private TableColumn<Mesa, Integer> taNumPessoas = new TableColumn<Mesa, Integer>("Pessoas");
+
+	ObservableList<Mesa> listaDeMesas = FXCollections.observableArrayList();
+
+	// Para cadastrar Mesas
+	@FXML
+	void novaMesa(ActionEvent event) throws IOException {
+		FXMLLoader novasMesas = new FXMLLoader(getClass().getResource("../TelasMesasView/FXMLNovasMesas.fxml"));
+		Parent parentNovasMesas = novasMesas.load();
+		sceneNovasMesas = new Scene(parentNovasMesas, 293.0, 143.0);
+		cena2.setTitle("Mesas");
+		cena2.setScene(sceneNovasMesas);
+		cena2.showAndWait();
+		if (controlador == 0) {
+			listaDeMesas.add(mesa);
+			controlador = 1;
+		}
+
+	}
+
 // fechar as janelas 
 	static void fecharJanela() {
-	    	cena2.close();
-	    }
-	
+		cena2.close();
+	}
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		initi();
 	}
-	
-	
-	
-	
-		
+
 //inicializando algumas coisas		
-	    @SuppressWarnings("unchecked")
-	   
-		public void initi() {
-	    	
-		    tabela.setItems(listaDeMesas);
-	    	taNome.setCellValueFactory(new PropertyValueFactory<Mesa, String>("nomeMesa"));
-	    	taCodigo.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroDaMesa"));
-	    	taNumero.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroPessoas"));
-	    	taNomeReserva.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("nomeReserva"));
-	    	taDisponibilidade.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("dis"));
-	    	taNumPessoas.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroReservas"));
-	    	taNome.setPrefWidth(50);
-	    	taDisponibilidade.setPrefWidth(102);
-	    	taInfo.getColumns().addAll(taCodigo,taNumero, taDisponibilidade);
-	    	taReserva.getColumns().addAll(taNomeReserva,taNumPessoas);
-	    	tabela.getColumns().addAll(taNome,taInfo,taReserva);
-	    
-	    	
-	    }
-	   
-	    @FXML
-	    private Label cargo = new Label();
-	    
-	    
-		
-		
-	    
-	    static ControleMesa teste = new ControleMesa();
-	    
-	    @FXML
-	    private Button BTMInter;
+	@SuppressWarnings("unchecked")
+
+	public void initi() {
+
+		tabela.setItems(listaDeMesas);
+		taNome.setCellValueFactory(new PropertyValueFactory<Mesa, String>("nomeMesa"));
+		taCodigo.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroDaMesa"));
+		taNumero.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroPessoas"));
+		taNomeReserva.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("nomeReserva"));
+		taDisponibilidade.setCellValueFactory(new PropertyValueFactory<Mesa, Boolean>("dis"));
+		taNumPessoas.setCellValueFactory(new PropertyValueFactory<Mesa, Integer>("numeroReservas"));
+		taNome.setPrefWidth(50);
+		taDisponibilidade.setPrefWidth(102);
+		taInfo.getColumns().addAll(taCodigo, taNumero, taDisponibilidade);
+		taReserva.getColumns().addAll(taNomeReserva, taNumPessoas);
+		tabela.getColumns().addAll(taNome, taInfo, taReserva);
+
+	}
+
+	@FXML
+	private Label cargo = new Label();
+
+	static ControleMesa teste = new ControleMesa();
+
+	@FXML
+	private Button BTMInter;
+
 // botao de interrogacao para ajudar nas info	    
-	    @FXML
-		void acaoBTMInter(ActionEvent event) {
-			Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-	    	alerta.setTitle("Ajuda");
-	    	alerta.setHeaderText(null);
-	    	alerta.setContentText("Mesas\nNova Mesa: inicia uma mesa a lista\nReserva: Adiciona uma reserva à mesa\n"
-	    			+ "Remover: Remove a reserva da mesa selecionada\nFechar Mesas: Encerra a conta das mesas.");
-	    	alerta.show();
-		}
-	    
-	    @FXML
-		void acaoBTMFechar(ActionEvent event) {
-	    	
-	    	if(tabela.getSelectionModel().isEmpty()) {
-				Alert cuidado = new Alert(Alert.AlertType.ERROR);
-				cuidado.setTitle("Erro");
-				cuidado.setHeaderText("Selecione uma para ver a conta");
-				cuidado.show();
-			}else if(tabela.getSelectionModel().getSelectedItem().getPedidos().size() == 0){
-				Alert cuidado = new Alert(Alert.AlertType.ERROR);
-				cuidado.setTitle("Erro");
-				cuidado.setHeaderText("Adicione pedidos a mesa");
-				cuidado.show();
-			}else{
-				controlador = 100;
-		    	controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
-				Main.changeScreen("Caixa");
-			}
-	    	
-		}
-	    
-	    @FXML
-		void BTMEditarMesa(ActionEvent event) {
-	    	/*ABRIR TELA COM PEDIDOS E TOTAL PARCIAL DESSA MESA,
-			 * NESSA TELA TEM QUE TER A OPÇÃO DE ADICIONAR PEDIDOS OU REMOVER PEDIDOS*/
-	    	
-	    	if(tabela.getSelectionModel().isEmpty()) {
-				Alert cuidado = new Alert(Alert.AlertType.ERROR);
-				cuidado.setTitle("Erro");
-				cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
-				cuidado.show();
-			}else if(tabela.getSelectionModel().getSelectedItem().getDisponivel()){
-				Alert cuidado = new Alert(Alert.AlertType.ERROR);
-				cuidado.setTitle("Erro");
-				cuidado.setHeaderText("Selecione uma mesa com reserva para colocar os pedidos");
-				cuidado.setContentText(null);
-				cuidado.show();
-			}else {
-				controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
-				Main.changeScreen("Pedidos");
-				controlador = 100;
-			}
-			
-			
-		}
-       
-	    
-	    public static Mesa mesaSelecionada = new Mesa(0,0);
-		
-		
-		public static Mesa getMesaSelecionada() {
-			return mesaSelecionada;
+	@FXML
+	void acaoBTMInter(ActionEvent event) {
+		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+		alerta.setTitle("Ajuda");
+		alerta.setHeaderText(null);
+		alerta.setContentText("Mesas\nNova Mesa: inicia uma mesa a lista\nReserva: Adiciona uma reserva à mesa\n"
+				+ "Remover: Remove a reserva da mesa selecionada\nFechar Mesas: Encerra a conta das mesas.");
+		alerta.show();
+	}
+
+	@FXML
+	void acaoBTMFechar(ActionEvent event) {
+
+		if (tabela.getSelectionModel().isEmpty()) {
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Selecione uma para ver a conta");
+			cuidado.show();
+		} else if (tabela.getSelectionModel().getSelectedItem().getPedidos().size() == 0) {
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Adicione pedidos a mesa");
+			cuidado.show();
+		} else {
+			controlador = 100;
+			controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
+			Main.changeScreen("Caixa");
 		}
 
-		public static void setMesaSelecionada(Mesa mesaSelecionada) {
-			controllerMesas.mesaSelecionada = mesaSelecionada;
+	}
+
+	@FXML
+	void BTMEditarMesa(ActionEvent event) {
+		/*
+		 * ABRIR TELA COM PEDIDOS E TOTAL PARCIAL DESSA MESA, NESSA TELA TEM QUE TER A
+		 * OPÇÃO DE ADICIONAR PEDIDOS OU REMOVER PEDIDOS
+		 */
+
+		if (tabela.getSelectionModel().isEmpty()) {
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Selecione uma mesa para colocar os pedidos");
+			cuidado.show();
+		} else if (tabela.getSelectionModel().getSelectedItem().getDisponivel()) {
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Selecione uma mesa com reserva para colocar os pedidos");
+			cuidado.setContentText(null);
+			cuidado.show();
+		} else {
+			controllerMesas.setMesaSelecionada(tabela.getSelectionModel().getSelectedItem());
+			Main.changeScreen("Pedidos");
+			controlador = 100;
 		}
 
-		@FXML
-	    void setOnKeyPressed(MouseEvent event) {
-			if(controlador == 100) {
-				
-				cargo.setText(controllerLogin.getCodigoTeste());
-				controlador = 1;
-				
-				for(int i = 0;i< listaDeMesas.size();i++) {
-					
-					if(getMesaSelecionada().equals(listaDeMesas.get(i))) {
-						listaDeMesas.get(i).resetarMesa();
-						listaDeMesas.get(i).setDisponivel(true);
-						listaDeMesas.get(i).setNomeReserva(null);
-						listaDeMesas.get(i).setNumeroReservas(0);
-						listaDeMesas.set(i, getMesaSelecionada());
-					}
+	}
+
+	public static Mesa mesaSelecionada = new Mesa(0, 0);
+
+	public static Mesa getMesaSelecionada() {
+		return mesaSelecionada;
+	}
+
+	public static void setMesaSelecionada(Mesa mesaSelecionada) {
+		controllerMesas.mesaSelecionada = mesaSelecionada;
+	}
+
+	@FXML
+	void setOnKeyPressed(MouseEvent event) {
+		if (controlador == 100) {
+
+			cargo.setText(controllerLogin.getCodigoTeste());
+			controlador = 1;
+
+			for (int i = 0; i < listaDeMesas.size(); i++) {
+
+				if (getMesaSelecionada().equals(listaDeMesas.get(i))) {
+					listaDeMesas.get(i).resetarMesa();
+					listaDeMesas.get(i).setDisponivel(true);
+					listaDeMesas.get(i).setNomeReserva(null);
+					listaDeMesas.get(i).setNumeroReservas(0);
+					listaDeMesas.set(i, getMesaSelecionada());
 				}
-				
 			}
-			
-	    }
-		
-		   @FXML
-		    void acaoFecharCaixa(ActionEvent event) throws IOException {
-			   boolean disponivel = true;
-			   
-			   for(Mesa m : listaDeMesas) {
-				   if(!m.getDisponivel()) {
-					   disponivel = false;
-				   }
-			   }
-			   if(disponivel && controllerCaixa.listaContas().size() > 0) {
-				   controlador = 100;
-				   Main.changeScreen("Fechar");
-			   }else if(!disponivel) {
-				   Alert cuidado = new Alert(Alert.AlertType.ERROR);
-					cuidado.setTitle("Erro");
-					cuidado.setHeaderText("Existe alguma mesa reservada ainda");
-					cuidado.setContentText(null);
-					cuidado.show();
-			   }else {
-				   Alert cuidado = new Alert(Alert.AlertType.ERROR);
-					cuidado.setTitle("Erro");
-					cuidado.setHeaderText("Ainda não possui contas");
-					cuidado.setContentText(null);
-					cuidado.show();
-			   }
-			   
-		    }
-		
-	 
-		
-	   
+
+		}
+
+	}
+
+	@FXML
+	void acaoFecharCaixa(ActionEvent event) throws IOException {
+		boolean disponivel = true;
+
+		for (Mesa m : listaDeMesas) {
+			if (!m.getDisponivel()) {
+				disponivel = false;
+			}
+		}
+		if (disponivel && controllerCaixa.listaContas().size() > 0) {
+			controlador = 100;
+			Main.changeScreen("Fechar");
+		} else if (!disponivel) {
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Existe alguma mesa reservada ainda");
+			cuidado.setContentText(null);
+			cuidado.show();
+		} else {
+			Alert cuidado = new Alert(Alert.AlertType.ERROR);
+			cuidado.setTitle("Erro");
+			cuidado.setHeaderText("Ainda não possui contas");
+			cuidado.setContentText(null);
+			cuidado.show();
+		}
+
+	}
+
 }

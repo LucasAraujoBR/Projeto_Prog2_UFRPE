@@ -8,7 +8,7 @@ public class Funcionario {
 	private String codFuncionario;
 	private String cargo;
 
-	public Funcionario(String nome,String cpf,String email,String telefone,String codFuncionario,String cargo) {
+	public Funcionario(String nome, String cpf, String email, String telefone, String codFuncionario, String cargo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -16,70 +16,48 @@ public class Funcionario {
 		this.telefone = telefone;
 		this.codFuncionario = codFuncionario;
 		this.cargo = cargo;
-		
-	}
 
-	
+	}
 
 	public String getCpf() {
 		return cpf;
 	}
 
-
-
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getTelefone() {
 		return telefone;
 	}
 
-
-
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
-
 
 	public String getCargo() {
 		return cargo;
 	}
 
-
-
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-
-
 
 	public String getCodFuncionario() {
 		return codFuncionario;
 	}
 
-
-
 	public void setCodFuncionario(String codFuncionario) {
 		this.codFuncionario = codFuncionario;
 	}
-
-
 
 	public String getNome() {
 		return nome;
@@ -91,7 +69,8 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return String.format("Cargo: " + this.cargo +" |CPF: " + this.cpf + "  |Código de usuário: " + this.codFuncionario);
+		return String
+				.format("Cargo: " + this.cargo + " |CPF: " + this.cpf + "  |Código de usuário: " + this.codFuncionario);
 	}
 
 }

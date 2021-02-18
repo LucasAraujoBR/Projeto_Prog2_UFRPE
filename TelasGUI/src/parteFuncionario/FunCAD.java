@@ -1,9 +1,6 @@
 package parteFuncionario;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import Mesas.Mesa;
 
 public class FunCAD {
 	private ArrayList<Funcionario> fun;
@@ -16,7 +13,7 @@ public class FunCAD {
 	}
 
 	public boolean cadrastarFuncionario(Funcionario p) {
-		
+
 		boolean FuncionarioExiste = false;
 		if (p != null) {
 			FuncionarioExiste = true;
@@ -27,15 +24,16 @@ public class FunCAD {
 					this.jaCadastrado = true;
 				}
 			}
-			
-			if (FuncionarioExiste) {	
+
+			if (FuncionarioExiste) {
 				this.fun.add(p);
 			}
-			
+
 		}
 		return FuncionarioExiste;
 
 	}
+
 	public void cadrastarCodFuncionario(ArrayList<String> codFuncionario2) {
 		if (codFuncionario2 != null) {
 			boolean FuncionarioExiste = true;
@@ -53,13 +51,15 @@ public class FunCAD {
 		}
 
 	}
-	
+
 	public void removerCodFuncionario(String p) {
 		codFuncionario.remove(p);
 	}
+
 	public void cadrastarCodFuncionario2(String p) {
 		codFuncionario.add(p);
 	}
+
 	public void removerFuncionario(Funcionario p) {
 		fun.remove(p);
 	}
@@ -71,6 +71,7 @@ public class FunCAD {
 	public ArrayList<Funcionario> listarFuncionario() {
 		return fun;
 	}
+
 	public ArrayList<String> listarCodFuncionario() {
 		return codFuncionario;
 	}

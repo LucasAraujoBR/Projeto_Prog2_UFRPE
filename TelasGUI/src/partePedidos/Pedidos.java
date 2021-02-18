@@ -1,9 +1,5 @@
 package partePedidos;
 
-import java.util.ArrayList;
-
-import Mesas.Mesa;
-
 public class Pedidos {
 	private int codPedido;
 	private String idPedido;

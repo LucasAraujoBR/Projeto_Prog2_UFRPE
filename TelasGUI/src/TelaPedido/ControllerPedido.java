@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import TelaMesas.controllerMesas;
 import application.Main;
-import application.controllerLogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +23,7 @@ import partePedidos.pedCAD;
 public class ControllerPedido implements Initializable {
 	PedidosCRUD ped = new PedidosCRUD();
 	ArrayList<pedCAD> listP = ped.listarCadPed();
-	
+
 	@FXML
 	private ListView<Pedidos> listViewPedidos;
 
@@ -36,7 +35,7 @@ public class ControllerPedido implements Initializable {
 
 	@FXML
 	private Button BTMRemover;
-	
+
 	@FXML
 	private Label mesaLabel;
 
@@ -54,84 +53,84 @@ public class ControllerPedido implements Initializable {
 
 	@FXML
 	void acaoAddPedido(ActionEvent event) {
-		
+
 		try {
-		listP.removeAll(ped.listarCadPed());
-		int codigo = Integer.parseInt(codPedidoTXT.getText());
-		int quantidade = Integer.parseInt(quantidadeTXT.getText());
-		if(codigo == 0 || quantidade == 0) {
-			Alert alerta = new Alert(Alert.AlertType.ERROR);
-			alerta.setTitle("Erro");
-			alerta.setHeaderText(null);
-			alerta.setContentText("Preencha todos os campos!");
-			alerta.show();
-			quantidadeTXT.clear();
-			codPedidoTXT.clear();
-		}
-		if(codigo == 1) {
-			pedCAD p = new pedCAD("Pizza",quantidade,22.5);
-			ped.cadPED(p);
-			
-			controllerMesas.getMesaSelecionada().cadastrarPedido(p);
-			listaCadPedidos.getItems().clear();
-			listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 2) {
-				pedCAD p = new pedCAD("Hamburguer",quantidade,12.5);
+			listP.removeAll(ped.listarCadPed());
+			int codigo = Integer.parseInt(codPedidoTXT.getText());
+			int quantidade = Integer.parseInt(quantidadeTXT.getText());
+			if (codigo == 0 || quantidade == 0) {
+				Alert alerta = new Alert(Alert.AlertType.ERROR);
+				alerta.setTitle("Erro");
+				alerta.setHeaderText(null);
+				alerta.setContentText("Preencha todos os campos!");
+				alerta.show();
+				quantidadeTXT.clear();
+				codPedidoTXT.clear();
+			}
+			if (codigo == 1) {
+				pedCAD p = new pedCAD("Pizza", quantidade, 22.5);
+				ped.cadPED(p);
+
+				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
+				listaCadPedidos.getItems().clear();
+				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
+			} else if (codigo == 2) {
+				pedCAD p = new pedCAD("Hamburguer", quantidade, 12.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 3) {
-				pedCAD p = new pedCAD("Bolo",quantidade,8.5);
+			} else if (codigo == 3) {
+				pedCAD p = new pedCAD("Bolo", quantidade, 8.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 4) {
-				pedCAD p = new pedCAD("Coca-Cola",quantidade,6.5);
+			} else if (codigo == 4) {
+				pedCAD p = new pedCAD("Coca-Cola", quantidade, 6.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 5) {
-				pedCAD p = new pedCAD("Pastel",quantidade,6.5);
+			} else if (codigo == 5) {
+				pedCAD p = new pedCAD("Pastel", quantidade, 6.5);
 				ped.cadPED(p);
-				
+
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-				
-			}else if(codigo == 6) {
-				pedCAD p = new pedCAD("Batata Frita",quantidade,12.5);
-				ped.cadPED(p);
-				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
-				listaCadPedidos.getItems().clear();
-				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 7) {
-				pedCAD p = new pedCAD("Sorvete",quantidade,4.5);
+
+			} else if (codigo == 6) {
+				pedCAD p = new pedCAD("Batata Frita", quantidade, 12.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 8) {
-				pedCAD p = new pedCAD("Biscoito",quantidade,1.5);
+			} else if (codigo == 7) {
+				pedCAD p = new pedCAD("Sorvete", quantidade, 4.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 9) {
-				pedCAD p = new pedCAD("Pão de alho",quantidade,3.5);
+			} else if (codigo == 8) {
+				pedCAD p = new pedCAD("Biscoito", quantidade, 1.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else if(codigo == 10) {
-				pedCAD p = new pedCAD("Self-Service",quantidade,15.5);
+			} else if (codigo == 9) {
+				pedCAD p = new pedCAD("Pão de alho", quantidade, 3.5);
 				ped.cadPED(p);
 				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
 				listaCadPedidos.getItems().clear();
 				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			}else {
+			} else if (codigo == 10) {
+				pedCAD p = new pedCAD("Self-Service", quantidade, 15.5);
+				ped.cadPED(p);
+				controllerMesas.getMesaSelecionada().cadastrarPedido(p);
+				listaCadPedidos.getItems().clear();
+				listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
+			} else {
 				Alert alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setTitle("Erro");
 				alerta.setHeaderText(null);
@@ -140,9 +139,9 @@ public class ControllerPedido implements Initializable {
 				quantidadeTXT.clear();
 				codPedidoTXT.clear();
 			}
-		quantidadeTXT.clear();
-		codPedidoTXT.clear();}
-		catch(NumberFormatException nfe) {
+			quantidadeTXT.clear();
+			codPedidoTXT.clear();
+		} catch (NumberFormatException nfe) {
 			Alert alerta = new Alert(Alert.AlertType.WARNING);
 			alerta.setTitle("Cuidado");
 			alerta.setHeaderText(null);
@@ -156,10 +155,10 @@ public class ControllerPedido implements Initializable {
 
 	@FXML
 	void acaoRemoverPedido(ActionEvent event) {
-		
+
 		int itemSelecionado = listaCadPedidos.getSelectionModel().getSelectedIndex();
 		listaCadPedidos.getItems().remove(itemSelecionado);
-		controllerMesas.getMesaSelecionada().removerPedido(listaCadPedidos.getSelectionModel().getSelectedIndex()+1);
+		controllerMesas.getMesaSelecionada().removerPedido(listaCadPedidos.getSelectionModel().getSelectedIndex() + 1);
 
 	}
 
@@ -167,7 +166,6 @@ public class ControllerPedido implements Initializable {
 	void acaoListarCadPedidos(ActionEvent event) {
 		listaCadPedidos.getItems().addAll(ped.listarCadPed());
 		listaCadPedidos.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
 
 	}
 
@@ -183,16 +181,16 @@ public class ControllerPedido implements Initializable {
 
 	@FXML
 	void listarMesasPedidos(ActionEvent event) {
-		Pedidos p = new Pedidos(1,"Pizza",22.5);
-		Pedidos p2 = new Pedidos(2,"Hamburguer",12.5);
-		Pedidos p3 = new Pedidos(3,"Bolo",8.5);
-		Pedidos p4 = new Pedidos(4,"Coca-Cola",6.5);
-		Pedidos p5 = new Pedidos(5,"Pastel",8.5);
-		Pedidos p6 = new Pedidos(6,"Batata Frita",12.5);
-		Pedidos p7 = new Pedidos(7,"Sorvete",4.5);
-		Pedidos p8 = new Pedidos(8,"Biscoito",1.5);
-		Pedidos p9 = new Pedidos(9,"Pão de alho",3.5);
-		Pedidos p10 = new Pedidos(10,"Self-Service",15.5);
+		Pedidos p = new Pedidos(1, "Pizza", 22.5);
+		Pedidos p2 = new Pedidos(2, "Hamburguer", 12.5);
+		Pedidos p3 = new Pedidos(3, "Bolo", 8.5);
+		Pedidos p4 = new Pedidos(4, "Coca-Cola", 6.5);
+		Pedidos p5 = new Pedidos(5, "Pastel", 8.5);
+		Pedidos p6 = new Pedidos(6, "Batata Frita", 12.5);
+		Pedidos p7 = new Pedidos(7, "Sorvete", 4.5);
+		Pedidos p8 = new Pedidos(8, "Biscoito", 1.5);
+		Pedidos p9 = new Pedidos(9, "Pão de alho", 3.5);
+		Pedidos p10 = new Pedidos(10, "Self-Service", 15.5);
 		ped.cadrastarPedidos(p);
 		ped.cadrastarPedidos(p2);
 		ped.cadrastarPedidos(p3);
@@ -213,16 +211,17 @@ public class ControllerPedido implements Initializable {
 		Main.changeScreen("Mesas");
 	}
 
-	   @FXML
-	    void mouseAtt(MouseEvent event) {
-		   
-		   if(controllerMesas.getControlador() == 100) {
-			   mesaLabel.setText("Mesa "+controllerMesas.getMesaSelecionada().getNumeroDaMesa());
-			   listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
-			   controllerMesas.setControlador(1);
-			}
-		  
-	    }
+	@FXML
+	void mouseAtt(MouseEvent event) {
+
+		if (controllerMesas.getControlador() == 100) {
+			mesaLabel.setText("Mesa " + controllerMesas.getMesaSelecionada().getNumeroDaMesa());
+			listaCadPedidos.getItems().addAll(controllerMesas.getMesaSelecionada().getPedidos());
+			controllerMesas.setControlador(1);
+		}
+
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		listarMesasPedidos(null);
